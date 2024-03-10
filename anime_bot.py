@@ -23,7 +23,7 @@ async def process_help_command(message: Message):
 
 @dp.message()
 async def rest_message_handler(message: Message):
-    await  message.answer('Извини, но в логику данного бота не заложена команда, которую ты отправил 👀')
+    await message.answer('Извини, но в логику данного бота не заложена команда, которую ты отправил 👀')
 
 
 if __name__ == '__main__':
