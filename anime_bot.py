@@ -10,7 +10,8 @@ dp = Dispatcher()
 
 @dp.message(Command(commands=['start']))
 async def process_start_command(message: Message):
-    await message.answer('Привет, мой дорогой друг! Я аниме-бот, который готов помочь тебе с выбором аниме 🌟')
+    await message.answer('Привет, мой дорогой друг!'
+                         '\nЯ аниме-бот, который готов помочь тебе с выбором аниме 🌟')
 
 
 @dp.message(Command(commands=['help']))
