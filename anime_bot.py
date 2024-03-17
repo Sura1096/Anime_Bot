@@ -1,34 +1,21 @@
-from environs import Env
+import asyncio
 from aiogram import Bot, Dispatcher
-from aiogram.filters import Command
-from aiogram.types import Message
-
-env = Env()
-env.read_env()
-
-bot_token = env('BOT_TOKEN')
-bot = Bot(token=bot_token)
-dp = Dispatcher()
+from config_data.config import load_config
+from handlers import user_handlers, other_handlers
 
 
-@dp.message(Command(commands=['start']))
-async def process_start_command(message: Message):
-    await message.answer('Привет, мой дорогой друг!'
-                         '\nЯ аниме-бот, который готов помочь тебе с выбором аниме 🌟')
+async def main() -> None:
+    config = load_config('.env')
+    bot_token = config.tg_bot.token
+    bot = Bot(token=bot_token)
+    dp = Dispatcher()
+
+    dp.include_router(user_handlers.router)
+    dp.include_router(other_handlers.router)
+
+    # Skip previous updates and start polling
+    await bot.delete_webhook(drop_pending_updates=True)
+    await dp.start_polling(bot)
 
 
-@dp.message(Command(commands=['help']))
-async def process_help_command(message: Message):
-    await message.answer('Обратись к админу по ссылке https://t.me/Sura_1096, если у тебя по данному боту возникли:'
-                         '\n1. Вопросы ❓'
-                         '\n2. Жалобы 💢'
-                         '\n3. Пожелания 🔆')
-
-
-@dp.message()
-async def rest_message_handler(message: Message):
-    await message.answer('Извини, но в логику данного бота не заложена команда, которую ты отправил 👀')
-
-
-if __name__ == '__main__':
-    dp.run_polling(bot)
+asyncio.run(main())
