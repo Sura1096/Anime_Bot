@@ -3,7 +3,7 @@ from aiogram.types import Message
 from aiogram.filters import Command, CommandStart
 from lexicon.lexicon import LEXICON
 from keyboards.set_menu import start_menu
-from keyboards.keyboard_utils import genres_button
+from keyboards.keyboard_utils import user_choice, genres_button
 
 
 router = Router()
