@@ -1,12 +1,16 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 
 def start_menu():
-    genre_type_year_button = KeyboardButton(text='Genre, type and year 📁')
-    random_button = KeyboardButton(text='Random anime 🃏')
-    popular_button = KeyboardButton(text='Popular anime 🔥')
-    search_button = KeyboardButton(text='Search by name 🔎')
-    keyboard = ReplyKeyboardMarkup(keyboard=[[genre_type_year_button, random_button, popular_button, search_button]],
-                                   one_time_keyboard=True,
-                                   resize_keyboard=True)
-    return keyboard
+    kb_builder = ReplyKeyboardBuilder()
+
+    buttons: list[KeyboardButton] = [
+        KeyboardButton(text='Genre 📁'),
+        KeyboardButton(text='Random anime 🃏'),
+        KeyboardButton(text='Popular anime 🔥'),
+        KeyboardButton(text='Search by name 🔎')
+    ]
+
+    kb_builder.row(*buttons, width=1)
+    return kb_builder
