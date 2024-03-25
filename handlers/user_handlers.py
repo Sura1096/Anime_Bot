@@ -1,4 +1,4 @@
-from aiogram import Router
+from aiogram import F, Router
 from aiogram.types import Message
 from aiogram.filters import Command, CommandStart
 from lexicon.lexicon import LEXICON
