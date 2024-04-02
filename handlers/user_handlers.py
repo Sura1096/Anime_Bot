@@ -1,5 +1,5 @@
 from aiogram import F, Router
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 from aiogram.filters import Command, CommandStart
 from lexicon.lexicon import LEXICON
 from keyboards.keyboard_utils import user_choice, genres_button
