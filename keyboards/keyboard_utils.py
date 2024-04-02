@@ -1,5 +1,5 @@
 from anime_genres.genres_list import genres
-from aiogram.types import KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 
