@@ -2,32 +2,39 @@ from anime_genres.genres_list import genres
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-def user_choice():
-    kb_builder = ReplyKeyboardBuilder()
+def user_choice_buttons():
+    genre_but = InlineKeyboardButton(text='Genre 📁',
+                                     callback_data='genre')
+    random_but = InlineKeyboardButton(text='Random anime 🃏',
+                                      callback_data='random anime')
+    popular_but = InlineKeyboardButton(text='Popular anime 🔥',
+                                       callback_data='popular anime')
+    search_but = InlineKeyboardButton(text='Search by name 🔎',
+                                      callback_data='search anime')
 
-    buttons: list[KeyboardButton] = [
-        KeyboardButton(text='Genre 📁'),
-        KeyboardButton(text='Random anime 🃏'),
-        KeyboardButton(text='Popular anime 🔥'),
-        KeyboardButton(text='Search by name 🔎')
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[[genre_but],
+                                                     [random_but],
+                                                     [popular_but],
+                                                     [search_but]])
+    return keyboard
+
+
+def help_command_button():
+    admin_link = InlineKeyboardButton(text='Contact admin',
+                                      url='https://t.me/Sura_1096')
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[[admin_link]])
+    return keyboard
+
+
+def genres_buttons():
+    genre_buttons: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text=f'{genre}', callback_data=genres[genre]) for genre in genres
     ]
 
-    kb_builder.row(*buttons, width=1)
-    return kb_builder
-
-
-def genres_button():
-    kb_builder = ReplyKeyboardBuilder()
-
-    genre_buttons: list[KeyboardButton] = [
-        KeyboardButton(text=f'{genre}') for genre in genres
+    option_buttons: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text='Apply filter 🟢', callback_data='apply filter'),
+        InlineKeyboardButton(text='To home page ⛩', callback_data='home page')
     ]
 
-    option_buttons: list[KeyboardButton] = [
-        KeyboardButton(text='Apply filter 🟢'),
-        KeyboardButton(text='To home page ⛩')
-    ]
-
-    kb_builder.row(*genre_buttons, width=4)
-    kb_builder.row(*option_buttons, width=2)
-    return kb_builder
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[genre_buttons, option_buttons])
+    return keyboard
