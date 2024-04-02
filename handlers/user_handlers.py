@@ -20,8 +20,7 @@ async def process_help_command(message: Message):
                          reply_markup=help_command_button())
 
 
-@router.message(F.text == 'Genre 📁')
-async def process_genres_button(message: Message):
-    await message.answer(text='Here is all genres',
-                         reply_markup=genres_button().as_markup(one_time_keyboard=True,
-                                                                resize_keyboard=True))
+@router.callback_query(F.data == 'genre')
+async def process_genres_button(callback: CallbackQuery):
+    await callback.message.answer(text='Here is all genres 🗂',
+                                  reply_markup=genres_buttons())
