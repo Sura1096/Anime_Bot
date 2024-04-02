@@ -11,8 +11,7 @@ router = Router()
 @router.message(CommandStart())
 async def process_start_command(message: Message):
     await message.answer(text=LEXICON['/start'],
-                         reply_markup=user_choice().as_markup(one_time_keyboard=True,
-                                                              resize_keyboard=True))
+                         reply_markup=user_choice_buttons())
 
 
 @router.message(Command(commands=['help']))
