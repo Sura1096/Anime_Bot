@@ -1,6 +1,5 @@
 from anime_genres.genres_list import genres
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 
 def user_choice():
