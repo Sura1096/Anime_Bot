@@ -16,7 +16,8 @@ async def process_start_command(message: Message):
 
 @router.message(Command(commands=['help']))
 async def process_help_command(message: Message):
-    await message.answer(text=LEXICON['/help'])
+    await message.answer(text=LEXICON['/help'],
+                         reply_markup=help_command_button())
 
 
 @router.message(F.text == 'Genre 📁')
