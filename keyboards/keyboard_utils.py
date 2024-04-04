@@ -4,20 +4,20 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
 def user_choice_buttons():
-    genre_but = InlineKeyboardButton(text='Genre 📁',
-                                     callback_data='genre')
-    random_but = InlineKeyboardButton(text='Random anime 🃏',
-                                      callback_data='random anime')
-    popular_but = InlineKeyboardButton(text='Popular anime 🔥',
-                                       callback_data='popular anime')
-    search_but = InlineKeyboardButton(text='Search by name 🔎',
-                                      callback_data='search anime')
+    keyboard_builder = InlineKeyboardBuilder()
+    category_buttons: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text='Genre 📁',
+                             callback_data='genre'),
+        InlineKeyboardButton(text='Random anime 🃏',
+                             callback_data='random anime'),
+        InlineKeyboardButton(text='Popular anime 🔥',
+                             callback_data='popular anime'),
+        InlineKeyboardButton(text='Search by name 🔎',
+                             callback_data='search anime')
+    ]
 
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[[genre_but],
-                                                     [random_but],
-                                                     [popular_but],
-                                                     [search_but]])
-    return keyboard
+    keyboard_builder.row(*category_buttons, width=1)
+    return keyboard_builder
 
 
 def help_command_button():
