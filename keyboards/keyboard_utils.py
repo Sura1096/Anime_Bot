@@ -6,8 +6,8 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 def user_choice_buttons():
     keyboard_builder = InlineKeyboardBuilder()
     category_buttons: list[InlineKeyboardButton] = [
-        InlineKeyboardButton(text='Genre 📁',
-                             callback_data='genre'),
+        InlineKeyboardButton(text='Genres 📁',
+                             callback_data='genres'),
         InlineKeyboardButton(text='Random anime 🃏',
                              callback_data='random anime'),
         InlineKeyboardButton(text='Popular anime 🔥',
@@ -28,6 +28,7 @@ def help_command_button():
 
 
 def genres_buttons():
+    keyboard_builder = InlineKeyboardBuilder()
     genre_buttons: list[InlineKeyboardButton] = [
         InlineKeyboardButton(text=f'{genre}', callback_data=genres[genre]) for genre in genres
     ]
@@ -37,5 +38,6 @@ def genres_buttons():
         InlineKeyboardButton(text='To home page ⛩', callback_data='home page')
     ]
 
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[genre_buttons, option_buttons])
-    return keyboard
+    keyboard_builder.row(*genre_buttons, width=3)
+    keyboard_builder.row(*option_buttons, width=1)
+    return keyboard_builder
