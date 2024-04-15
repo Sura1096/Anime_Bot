@@ -1,26 +1,3 @@
-# genres: dict[str, str] = {
-#     'Action': 'Action',
-#     'Adventure': 'Adventure',
-#     'Comedy': 'Comedy',
-#     'Drama': 'Drama',
-#     'Slice of Life': 'Slice of Life',
-#     'Fantasy': 'Fantasy',
-#     'Supernatural': 'Supernatural',
-#     'Horror': 'Horror',
-#     'Mystery': 'Mystery',
-#     'Psychological': 'Psychological',
-#     'Romance': 'Romance',
-#     'Sci-Fi': 'Sci-Fi',
-#     'Sports': 'Sports',
-#     'Thriller': 'Thriller',
-#     'Ecchi': 'Ecchi',
-#     'Mahou Shoujo': 'Mahou Shoujo',
-#     'Hentai': 'Hentai',
-#     'Music': 'Music',
-#     'Mecha': 'Mecha'
-# }
-
-
 genres: dict[str, str] = {
     1: 'Action',
     2: 'Adventure',
