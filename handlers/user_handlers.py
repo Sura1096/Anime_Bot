@@ -24,6 +24,11 @@ async def process_help_command(message: Message):
 
 @router.callback_query(F.data == 'genres')
 async def process_genres_buttons(callback: CallbackQuery):
+    '''
+    TODO: Try to add two buttons at the end of each paginating page
+    InlineKeyboardButton(text='Apply filter 🟢', callback_data='apply filter'),
+    InlineKeyboardButton(text='To home page ⛩', callback_data='home page')
+    '''
     buttons: list[InlineKeyboardButton] = [
         InlineKeyboardButton(text=f'{genres[genre_id]}', callback_data=str(genre_id)) for genre_id in genres
     ]
