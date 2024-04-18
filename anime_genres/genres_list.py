@@ -1,4 +1,4 @@
-genres: dict[str, str] = {
+genres: dict[int, str] = {
     1: 'Action',
     2: 'Adventure',
     5: 'Avant Garde',
