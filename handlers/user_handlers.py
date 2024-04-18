@@ -27,8 +27,6 @@ async def process_genres_buttons(callback: CallbackQuery):
     buttons: list[InlineKeyboardButton] = [
         InlineKeyboardButton(text=f'{genres[genre_id]}', callback_data=str(genre_id)) for genre_id in genres
     ]
-    buttons.append(InlineKeyboardButton(text='Apply filter 🟢', callback_data='apply filter'))
-    buttons.append(InlineKeyboardButton(text='To home page ⛩', callback_data='home page'))
 
     paginator = KeyboardPaginator(
         data=buttons,
