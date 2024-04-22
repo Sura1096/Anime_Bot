@@ -28,8 +28,7 @@ def help_command_button():
 
 
 def genres_buttons():
-    keyboard_builder = InlineKeyboardBuilder()
-    genre_buttons: list[InlineKeyboardButton] = [
+    buttons: list[InlineKeyboardButton] = [
         InlineKeyboardButton(text=f'{genres[genre_id]}', callback_data=str(genre_id)) for genre_id in genres
     ]
 
