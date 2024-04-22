@@ -31,6 +31,7 @@ def genres_buttons():
     buttons: list[InlineKeyboardButton] = [
         InlineKeyboardButton(text=f'{genres[genre_id]}', callback_data=str(genre_id)) for genre_id in genres
     ]
+    return buttons
 
     option_buttons: list[InlineKeyboardButton] = [
         InlineKeyboardButton(text='Apply filter 🟢', callback_data='apply filter'),
