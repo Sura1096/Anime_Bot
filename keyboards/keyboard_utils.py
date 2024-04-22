@@ -33,11 +33,9 @@ def genres_buttons():
     ]
     return buttons
 
-    option_buttons: list[InlineKeyboardButton] = [
-        InlineKeyboardButton(text='Apply filter 🟢', callback_data='apply filter'),
-        InlineKeyboardButton(text='To home page ⛩', callback_data='home page')
-    ]
 
-    keyboard_builder.row(*genre_buttons, width=3)
-    keyboard_builder.row(*option_buttons, width=1)
-    return keyboard_builder
+def apply_filter_for_genres_button():
+    apply_filter: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text='Apply filter 🟢', callback_data='apply filter for genres')
+    ]
+    return apply_filter
