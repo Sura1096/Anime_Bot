@@ -27,7 +27,7 @@ async def process_help_command(message: Message):
 async def process_genres_buttons(callback: CallbackQuery):
     paginator = KeyboardPaginator(
         data=genres_buttons(),
-        additional_buttons=[apply_filter_button(), end_home_button()],
+        additional_buttons=[apply_filter_for_genres_button(), end_home_button()],
         router=router,
         per_page=10,
         per_row=(3, 3)
