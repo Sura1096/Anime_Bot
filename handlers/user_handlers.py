@@ -5,6 +5,7 @@ from lexicon.lexicon import LEXICON
 from keyboards.keyboard_utils import (user_choice_buttons, help_command_button,
                                       genres_buttons, apply_filter_for_genres_button, end_home_button)
 from aiogram_widgets.pagination import KeyboardPaginator
+from anime_genres.genres_list import ids
 
 
 router = Router()
