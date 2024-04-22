@@ -1,5 +1,5 @@
 from aiogram import F, Router
-from aiogram.types import Message, CallbackQuery, InlineKeyboardButton
+from aiogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.filters import Command, CommandStart
 from lexicon.lexicon import LEXICON
 from keyboards.keyboard_utils import user_choice_buttons, help_command_button, genres_buttons
@@ -33,8 +33,14 @@ async def process_genres_buttons(callback: CallbackQuery):
         InlineKeyboardButton(text=f'{genres[genre_id]}', callback_data=str(genre_id)) for genre_id in genres
     ]
 
+    home_buttons: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text='Apply filter 🟢', callback_data='apply filter'),
+        InlineKeyboardButton(text='To home page ⛩', callback_data='home page')
+    ]
+
     paginator = KeyboardPaginator(
         data=buttons,
+        additional_buttons=[home_buttons],
         router=router,
         per_page=10,
         per_row=(3, 3)
