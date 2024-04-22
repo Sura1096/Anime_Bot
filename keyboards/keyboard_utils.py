@@ -39,3 +39,10 @@ def apply_filter_for_genres_button():
         InlineKeyboardButton(text='Apply filter 🟢', callback_data='apply filter for genres')
     ]
     return apply_filter
+
+
+def end_home_button():
+    home_button: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text='To home page ⛩', callback_data='home page')
+    ]
+    return home_button
