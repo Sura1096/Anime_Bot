@@ -1,5 +1,5 @@
 from aiogram import F, Router
-from aiogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import Message, CallbackQuery, InlineKeyboardButton
 from aiogram.filters import Command, CommandStart
 from lexicon.lexicon import LEXICON
 from keyboards.keyboard_utils import user_choice_buttons, help_command_button, genres_buttons
@@ -42,3 +42,9 @@ async def process_genres_buttons(callback: CallbackQuery):
     )
     await callback.message.answer(text='Here is all genres 🗂',
                                   reply_markup=paginator.as_markup())
+
+
+@router.callback_query(F.data == 'home page')
+async def process_home_page_button(callback: CallbackQuery):
+    await callback.message.answer(text=LEXICON['/start'],
+                                  reply_markup=user_choice_buttons().as_markup())
