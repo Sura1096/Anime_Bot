@@ -23,6 +23,12 @@ class JikanAPI:
         return genres
 
     def search_by_genres_id(self, params):
+        '''
+        params argument must be dictionary because it is a query parameter
+        params = {
+            "genres": "1,2,3" Replace with users parameters
+        }
+        '''
         full_url = f'{self.base_url}/anime'
         res = requests.get(full_url, params=params)
         if res.status_code != 200:
