@@ -1,4 +1,8 @@
 class ParseAnimeData:
+    '''
+    TODO:
+    Handle situation when there is no anime data from API
+    '''
     def anime_image(self, anime_data):
         res = anime_data['data']
         if res['images']:
