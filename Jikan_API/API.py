@@ -15,12 +15,7 @@ class JikanAPI:
         res = requests.get(f'{self.base_url}/genres/anime')
         if res.status_code != 200:
             return 'Not found'
-        genres = {}
-        for genre in res.json()['data']:
-            ind = genre['mal_id']
-            genre_name = genre['name']
-            genres[ind] = genre_name
-        return genres
+        return res.json()
 
     def search_by_genres_id(self, params):
         '''
