@@ -34,3 +34,9 @@ class JikanAPI:
         if res.status_code != 200:
             return 'Not found'
         return res.json()
+
+    def get_random_anime(self):
+        res = requests.get(f'{self.base_url}/random/anime')
+        if res.status_code != 200:
+            return 'Not found'
+        return res.json()
