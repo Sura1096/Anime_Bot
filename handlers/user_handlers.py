@@ -40,11 +40,3 @@ async def process_genres_buttons(callback: CallbackQuery):
 async def process_home_page_button(callback: CallbackQuery):
     await callback.message.answer(text=LEXICON['/start'],
                                   reply_markup=user_choice_buttons().as_markup())
-
-
-@router.callback_query(F.data in ids)
-async def process_genre_button(callback: CallbackQuery):
-    selected_genres = []
-    if callback.data not in selected_genres:
-        selected_genres.append(callback.data)
-    return selected_genres
