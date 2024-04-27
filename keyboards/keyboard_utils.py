@@ -46,3 +46,13 @@ def end_home_button():
         InlineKeyboardButton(text='To home page ⛩', callback_data='home page')
     ]
     return home_button
+
+
+def random_home_buttons():
+    keyboard_builder = InlineKeyboardBuilder()
+    home_random_buttons: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text='Next 🟢', callback_data='random anime'),
+        InlineKeyboardButton(text='To home page ⛩', callback_data='home page')
+    ]
+    keyboard_builder.row(*home_random_buttons, width=1)
+    return keyboard_builder
