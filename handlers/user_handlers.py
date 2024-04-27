@@ -43,3 +43,24 @@ async def process_genres_buttons(callback: CallbackQuery):
 async def process_home_page_button(callback: CallbackQuery):
     await callback.message.answer(text=LEXICON['/start'],
                                   reply_markup=user_choice_buttons().as_markup())
+
+
+@router.callback_query(F.data == 'random anime')
+async def process_random_button(callback: CallbackQuery):
+    anime = JikanAPI()
+    data = anime.get_random_anime()
+    parse = ParseAnimeData()
+    image = parse.anime_image(data)
+    title = parse.anime_title(data)
+    score = parse.anime_score(data)
+    year = parse.anime_year(data)
+    genres = parse.anime_included_genres_or_themes(data)
+    desc = parse.anime_description(data)
+
+    await callback.message.answer(text=f'{image}\n'
+                                       f'{title}\n'
+                                       f'{score}\n'
+                                       f'{year}\n'
+                                       f'{genres}\n'
+                                       f'{desc}',
+                                  reply_markup=random_home_buttons().as_markup())
