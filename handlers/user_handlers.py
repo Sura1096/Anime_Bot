@@ -71,10 +71,10 @@ async def process_random_button(callback: CallbackQuery):
         genres = parse.anime_included_genres_or_themes()
         desc = parse.anime_description()
 
-    await callback.message.answer_photo(photo=image,
-                                        caption=f'{title}\n'
-                                                f'{score}\n'
-                                                f'{year}\n'
-                                                f'{genres}\n'
-                                                f'{desc}',
-                                        reply_markup=random_home_buttons().as_markup())
+    await callback.message.answer_photo(photo=image)
+    await callback.message.answer(text=f'{title}\n'
+                                       f'{score}\n'
+                                       f'{year}\n'
+                                       f'{genres}\n'
+                                       f'{desc}',
+                                  reply_markup=random_home_buttons().as_markup())
