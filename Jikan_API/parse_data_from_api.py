@@ -7,9 +7,9 @@ class ParseAnimeData:
         res = anime_data['data']
         if res['images']:
             if res['images']['jpg']['image_url']:
-                return f"Image: {res['images']['jpg']['image_url']}"
+                return res['images']['jpg']['image_url']
             elif res['images']['webp']['image_url']:
-                return f"Image: {res['images']['webp']['image_url']}"
+                return res['images']['webp']['image_url']
         return 'There is no image info.'
 
     def anime_title(self, anime_data):
