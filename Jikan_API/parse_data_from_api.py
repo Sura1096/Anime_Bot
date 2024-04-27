@@ -26,14 +26,14 @@ class ParseAnimeData:
         if res['score']:
             return f"Score: {res['score']}"
         else:
-            return "There is no score info."
+            return None
 
     def anime_year(self, anime_data):
         res = anime_data['data']
         if res['year']:
             return f"Year: {res['year']}"
         else:
-            return "There is no year info."
+            return None
 
     def anime_included_genres_or_themes(self, anime_data):
         res = anime_data['data']
@@ -48,10 +48,10 @@ class ParseAnimeData:
                 themes.append(theme['name'])
                 return f"Themes: {', '.join(themes)}"
         else:
-            return 'No info about genres or themes'
+            return None
 
     def anime_description(self, anime_data):
         res = anime_data['data']
         if res['synopsis']:
             return f"Description: {res['synopsis']}"
-        return 'No synopsis information has been added to this title.'
+        return None
