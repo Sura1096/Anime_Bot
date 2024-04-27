@@ -56,6 +56,17 @@ async def process_random_button(callback: CallbackQuery):
     genres = parse.anime_included_genres_or_themes(data)
     desc = parse.anime_description(data)
 
+    while (score is None) or (genres is None) or (desc is None):
+        anime = JikanAPI()
+        data = anime.get_random_anime()
+        parse = ParseAnimeData()
+        image = parse.anime_image(data)
+        title = parse.anime_title(data)
+        score = parse.anime_score(data)
+        year = parse.anime_year(data)
+        genres = parse.anime_included_genres_or_themes(data)
+        desc = parse.anime_description(data)
+
     await callback.message.answer_photo(photo=image,
                                         caption=f'{title}\n'
                                                 f'{score}\n'
