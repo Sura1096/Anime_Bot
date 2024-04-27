@@ -48,13 +48,15 @@ async def process_home_page_button(callback: CallbackQuery):
 async def process_random_button(callback: CallbackQuery):
     anime = JikanAPI()
     data = anime.get_random_anime()
-    parse = ParseAnimeData()
-    image = parse.anime_image(data)
-    title = parse.anime_title(data)
-    score = parse.anime_score(data)
-    year = parse.anime_year(data)
-    genres = parse.anime_included_genres_or_themes(data)
-    desc = parse.anime_description(data)
+    while data == 'Not found':
+        data = anime.get_random_anime()
+    parse = ParseAnimeData(data)
+    image = parse.anime_image()
+    title = parse.anime_title()
+    score = parse.anime_score()
+    year = parse.anime_year()
+    genres = parse.anime_included_genres_or_themes()
+    desc = parse.anime_description()
 
     while (score is None) or (genres is None) or (desc is None):
         anime = JikanAPI()
