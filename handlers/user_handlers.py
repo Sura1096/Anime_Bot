@@ -6,7 +6,6 @@ from keyboards.keyboard_utils import (user_choice_buttons, help_command_button,
                                       genres_buttons, apply_filter_for_genres_button, end_home_button,
                                       random_home_buttons)
 from aiogram_widgets.pagination import KeyboardPaginator
-from anime_genres.genres_list import ids
 from Jikan_API.API import JikanAPI
 from Jikan_API.parse_data_from_api import ParseAnimeData
 
