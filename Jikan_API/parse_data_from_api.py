@@ -33,7 +33,7 @@ class ParseAnimeData:
         if res['year']:
             return f"Year: {res['year']}"
         else:
-            return None
+            return "There is no year info."
 
     def anime_included_genres_or_themes(self, anime_data):
         res = anime_data['data']
