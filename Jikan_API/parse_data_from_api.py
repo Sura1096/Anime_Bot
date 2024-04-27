@@ -3,8 +3,12 @@ class ParseAnimeData:
     TODO:
     Handle situation when there is no anime data from API
     '''
-    def anime_image(self, anime_data):
-        res = anime_data['data']
+
+    def __init__(self, anime_data='Not found'):
+        self.anime = anime_data
+
+    def anime_image(self):
+        res = self.anime['data']
         if res['images']:
             if res['images']['jpg']['image_url']:
                 return res['images']['jpg']['image_url']
@@ -12,8 +16,8 @@ class ParseAnimeData:
                 return res['images']['webp']['image_url']
         return 'There is no image info.'
 
-    def anime_title(self, anime_data):
-        res = anime_data['data']
+    def anime_title(self):
+        res = self.anime['data']
         titles = []
         if res['title_english']:
             titles.append(res['title_english'])
@@ -21,22 +25,22 @@ class ParseAnimeData:
             titles.append(res['title'])
         return f"Titles: {' / '.join(titles)}"
 
-    def anime_score(self, anime_data):
-        res = anime_data['data']
+    def anime_score(self):
+        res = self.anime['data']
         if res['score']:
             return f"Score: {res['score']}"
         else:
             return None
 
-    def anime_year(self, anime_data):
-        res = anime_data['data']
+    def anime_year(self):
+        res = self.anime['data']
         if res['year']:
             return f"Year: {res['year']}"
         else:
             return "There is no year info."
 
-    def anime_included_genres_or_themes(self, anime_data):
-        res = anime_data['data']
+    def anime_included_genres_or_themes(self):
+        res = self.anime['data']
         genres = []
         themes = []
         if res['genres']:
@@ -50,8 +54,8 @@ class ParseAnimeData:
         else:
             return None
 
-    def anime_description(self, anime_data):
-        res = anime_data['data']
+    def anime_description(self):
+        res = self.anime['data']
         if res['synopsis']:
             return f"Description: {res['synopsis']}"
         return None
