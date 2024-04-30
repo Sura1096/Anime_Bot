@@ -66,3 +66,10 @@ class ParseAnimeData:
             return f"<b>Type:</b> {res['type']}"
         else:
             return "<i>No type information has been added to this title.</i>"
+
+    def anime_episodes(self):
+        res = self.anime['data']
+        if res['episodes']:
+            return f"<b>Episodes amount:</b> {res['episodes']}"
+        else:
+            return "<i>No episodes information has been added to this title.</i>"
