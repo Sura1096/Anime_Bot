@@ -72,9 +72,10 @@ async def process_random_button(callback: CallbackQuery):
         desc = parse.anime_description()
 
     await callback.message.answer_photo(photo=image)
-    await callback.message.answer(text=f'{title}\n'
-                                       f'{score}\n'
-                                       f'{year}\n'
-                                       f'{genres}\n'
-                                       f'{desc}',
+    await callback.message.answer(text=f'{title} 🔆\n'
+                                       f'{score} 🌟\n'
+                                       f'{year} 📆\n'
+                                       f'{genres} 🗂\n'
+                                       f'📜 {desc}',
+                                  parse_mode='html',
                                   reply_markup=random_home_buttons().as_markup())
