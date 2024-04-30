@@ -73,3 +73,10 @@ class ParseAnimeData:
             return f"<b>Episodes amount:</b> {res['episodes']}"
         else:
             return "<i>No episodes information has been added to this title.</i>"
+
+    def anime_status(self):
+        res = self.anime['data']
+        if res['status']:
+            return f"<b>Status:</b> {res['status']}"
+        else:
+            return "<i>No status information has been added to this title.</i>"
