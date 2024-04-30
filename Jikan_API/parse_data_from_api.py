@@ -14,7 +14,7 @@ class ParseAnimeData:
                 return res['images']['jpg']['image_url']
             elif res['images']['webp']['image_url']:
                 return res['images']['webp']['image_url']
-        return 'There is no image info.'
+        return '<i>There is no image info.</i>'
 
     def anime_title(self):
         res = self.anime['data']
@@ -23,21 +23,21 @@ class ParseAnimeData:
             titles.append(res['title_english'])
         if res['title']:
             titles.append(res['title'])
-        return f"Titles: {' / '.join(titles)}"
+        return f"<b>Titles:</b> {' / '.join(titles)}"
 
     def anime_score(self):
         res = self.anime['data']
         if res['score']:
-            return f"Score: {res['score']}"
+            return f"<b>Score:</b> {res['score']}"
         else:
             return None
 
     def anime_year(self):
         res = self.anime['data']
         if res['year']:
-            return f"Year: {res['year']}"
+            return f"<b>Year:</b> {res['year']}"
         else:
-            return "There is no year info."
+            return "<i>There is no year info.</i>"
 
     def anime_included_genres_or_themes(self):
         res = self.anime['data']
@@ -46,16 +46,16 @@ class ParseAnimeData:
         if res['genres']:
             for genre in res['genres']:
                 genres.append(genre['name'])
-                return f"Genres: {', '.join(genres)}"
+                return f"<b>Genres:</b> {', '.join(genres)}"
         elif res['themes']:
             for theme in res['themes']:
                 themes.append(theme['name'])
-                return f"Themes: {', '.join(themes)}"
+                return f"<b>Themes:</b> {', '.join(themes)}"
         else:
             return None
 
     def anime_description(self):
         res = self.anime['data']
         if res['synopsis']:
-            return f"Description: {res['synopsis']}"
+            return f"<b>Description:</b> {res['synopsis']}"
         return None
