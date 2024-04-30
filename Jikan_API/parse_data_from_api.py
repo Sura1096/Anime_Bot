@@ -59,3 +59,10 @@ class ParseAnimeData:
         if res['synopsis']:
             return f"<b>Description:</b> {res['synopsis']}"
         return None
+
+    def anime_type(self):
+        res = self.anime['data']
+        if res['type']:
+            return f"<b>Type:</b> {res['type']}"
+        else:
+            return "<i>No type information has been added to this title.</i>"
