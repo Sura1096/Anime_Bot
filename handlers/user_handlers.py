@@ -73,12 +73,19 @@ async def process_random_button(callback: CallbackQuery):
         year = parse.anime_year()
         genres = parse.anime_included_genres_or_themes()
         desc = parse.anime_description()
+        type_anime = parse.anime_type()
+        eps = parse.anime_episodes()
+        status = parse.anime_status()
 
     await callback.message.answer_photo(photo=image)
-    await callback.message.answer(text=f'{title} 🔆\n'
+    await callback.message.answer(text=f'{title} 🎲\n'
+                                       f'{type_anime} 🌸\n'
+                                       f'{eps} 🎬\n'
+                                       f'{status} 🔥\n'
                                        f'{score} 🌟\n'
                                        f'{year} 📆\n'
                                        f'{genres} 🗂\n'
-                                       f'📜 {desc}',
+                                       f'📜 {desc}\n'
+                                       f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
                                   parse_mode='html',
                                   reply_markup=random_home_buttons().as_markup())
