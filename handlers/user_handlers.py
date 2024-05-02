@@ -36,12 +36,14 @@ async def process_genres_buttons(callback: CallbackQuery):
     )
     await callback.message.answer(text='Here is all genres 🗂',
                                   reply_markup=paginator.as_markup())
+    await callback.answer()
 
 
 @router.callback_query(F.data == 'home page')
 async def process_home_page_button(callback: CallbackQuery):
     await callback.message.answer(text=LEXICON['/start'],
                                   reply_markup=user_choice_buttons().as_markup())
+    await callback.answer()
 
 
 @router.callback_query(F.data == 'random anime')
@@ -89,3 +91,4 @@ async def process_random_button(callback: CallbackQuery):
                                        f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
                                   parse_mode='html',
                                   reply_markup=random_home_buttons().as_markup())
+    await callback.answer()
