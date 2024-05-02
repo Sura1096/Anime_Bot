@@ -14,7 +14,7 @@ class ParseAnimeData:
                 return res['images']['jpg']['image_url']
             elif res['images']['webp']['image_url']:
                 return res['images']['webp']['image_url']
-        return '<i>There is no image info.</i>'
+        return '<i>Image has not been added to this title.</i>'
 
     def anime_title(self):
         res = self.anime['data']
@@ -37,7 +37,7 @@ class ParseAnimeData:
         if res['year']:
             return f"<b>Year:</b> {res['year']}"
         else:
-            return "<i>There is no year info.</i>"
+            return "<i>No year information has been added to this title.</i>"
 
     def anime_included_genres_or_themes(self):
         res = self.anime['data']
