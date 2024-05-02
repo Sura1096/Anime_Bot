@@ -57,6 +57,9 @@ async def process_random_button(callback: CallbackQuery):
     year = parse.anime_year()
     genres = parse.anime_included_genres_or_themes()
     desc = parse.anime_description()
+    type_anime = parse.anime_type()
+    eps = parse.anime_episodes()
+    status = parse.anime_status()
 
     while (score is None) or (genres is None) or (desc is None):
         anime = JikanAPI()
