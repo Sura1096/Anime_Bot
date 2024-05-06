@@ -35,3 +35,16 @@ class JikanAPI:
         if res.status_code != 200:
             return 'Not found'
         return res.json()
+
+    def get_searched_anime(self, anime_name_parameter):
+        '''
+        params argument must be dictionary because it is a query parameter
+        params = {
+            "genres": "1,2,3" Replace with users parameters
+        }
+        '''
+        full_url = f'{self.base_url}/anime'
+        res = requests.get(full_url, params=anime_name_parameter)
+        if res.status_code != 200:
+            return 'Not found'
+        return res.json()
