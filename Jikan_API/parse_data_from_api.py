@@ -1,9 +1,4 @@
 class ParseAnimeData:
-    '''
-    TODO:
-    Handle situation when there is no anime data from API
-    '''
-
     def __init__(self, anime_data='Not found'):
         self.anime = anime_data
 
