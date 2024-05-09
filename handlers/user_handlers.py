@@ -1,5 +1,6 @@
-from aiogram import F, Router
-from aiogram.types import Message, CallbackQuery
+from aiogram import F, Router, filters
+from aiogram.types import Message, CallbackQuery, InlineQuery, InlineQueryResultArticle, InputTextMessageContent
+import hashlib
 from aiogram.filters import Command, CommandStart
 from lexicon.lexicon import LEXICON
 from keyboards.keyboard_utils import (user_choice_buttons, help_command_button,
@@ -7,7 +8,7 @@ from keyboards.keyboard_utils import (user_choice_buttons, help_command_button,
                                       random_home_buttons)
 from aiogram_widgets.pagination import KeyboardPaginator
 from Jikan_API.API import JikanAPI
-from Jikan_API.parse_data_from_api import ParseAnimeData
+from Jikan_API.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
 
 
 router = Router()
@@ -92,3 +93,19 @@ async def process_random_button(callback: CallbackQuery):
                                   parse_mode='html',
                                   reply_markup=random_home_buttons().as_markup())
     await callback.answer()
+
+
+@router.inline_query()
+async def inline_echo(inline_query: InlineQuery):
+    print(inline_query)
+    text = inline_query.query or 'Echo'
+    input_content = InputTextMessageContent(message_text=text)
+    result_id = hashlib.md5(text.encode()).hexdigest()
+
+    item = [InlineQueryResultArticle(
+        id=result_id,
+        title='Text',
+        input_message_content=input_content
+    )]
+    await inline_query.answer(results=item, is_personal=True)
+    print(inline_query)
