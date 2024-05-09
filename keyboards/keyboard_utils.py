@@ -13,7 +13,7 @@ def user_choice_buttons():
         InlineKeyboardButton(text='Popular anime 🔥',
                              callback_data='popular anime'),
         InlineKeyboardButton(text='Search by name 🔎',
-                             callback_data='search anime')
+                             switch_inline_query_current_chat='')
     ]
 
     keyboard_builder.row(*category_buttons, width=1)
