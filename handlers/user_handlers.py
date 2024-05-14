@@ -98,12 +98,43 @@ async def process_random_button(callback: CallbackQuery):
 @router.inline_query()
 async def inline_echo(inline_query: InlineQuery):
     text = inline_query.query or 'Echo'
-    input_content = InputTextMessageContent(message_text=text)
+    param = {'q': text}
+    anime = JikanAPI()
+    data = anime.get_searched_anime(param)
+    parse = ParseAnimeDataFromSearch(data)
+    image = parse.anime_image()
+    title = parse.anime_title()
+    score = parse.anime_score()
+    year = parse.anime_year()
+    genres = parse.anime_included_genres_or_themes()
+    desc = parse.anime_description()
+    type_anime = parse.anime_type()
+    eps = parse.anime_episodes()
+    status = parse.anime_status()
+
+    input_content = InputTextMessageContent(message_text=f'<b>Titles:</b> {title}\n'
+                                                         f'{type_anime}\n'
+                                                         f'{eps}\n'
+                                                         f'{status}\n'
+                                                         f'{score}\n'
+                                                         f'{year}\n'
+                                                         f'{genres}\n'
+                                                         f'{desc}\n'
+                                                         f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
+                                            parse_mode='html')
     result_id = hashlib.md5(text.encode()).hexdigest()
 
-    item = [InlineQueryResultArticle(
+    articles = [InlineQueryResultArticle(
         id=result_id,
-        title='Text',
+        title=f'{title}',
         input_message_content=input_content
-    )]
-    await inline_query.answer(results=item, is_personal=True)
+    ),
+        InlineQueryResultPhoto(
+            type='photo',
+            id=result_id,
+            photo_url=image,
+            thumbnail_url=image
+        )
+    ]
+
+    await inline_query.answer(results=articles, cache_time=1, is_personal=True)
