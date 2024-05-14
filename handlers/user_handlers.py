@@ -97,7 +97,6 @@ async def process_random_button(callback: CallbackQuery):
 
 @router.inline_query()
 async def inline_echo(inline_query: InlineQuery):
-    print(inline_query)
     text = inline_query.query or 'Echo'
     input_content = InputTextMessageContent(message_text=text)
     result_id = hashlib.md5(text.encode()).hexdigest()
@@ -108,4 +107,3 @@ async def inline_echo(inline_query: InlineQuery):
         input_message_content=input_content
     )]
     await inline_query.answer(results=item, is_personal=True)
-    print(inline_query)
