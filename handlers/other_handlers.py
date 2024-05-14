@@ -4,15 +4,10 @@ import hashlib
 from lexicon.lexicon import (LEXICON)
 from Jikan_API.parse_data_from_api import ParseAnimeDataFromSearch
 from Jikan_API.API import JikanAPI
+from filters.is_admin import my_filter
 
 
 router = Router()
-
-
-def my_filter(message: Message):
-    if not message.text.startswith(':'):
-        return True
-    return False
 
 
 @router.message(my_filter)
