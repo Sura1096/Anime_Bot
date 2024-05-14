@@ -9,6 +9,12 @@ from Jikan_API.API import JikanAPI
 router = Router()
 
 
-# @router.message()
-# async def rest_message_handler(message: Message):
-#     await message.answer(text=LEXICON['unknown'])
+def my_filter(message: Message):
+    if not message.text.startswith(':'):
+        return True
+    return False
+
+
+@router.message(my_filter)
+async def rest_message_handler(message: Message):
+    await message.answer(text=LEXICON['unknown'])
