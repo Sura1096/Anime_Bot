@@ -102,7 +102,7 @@ class ParseAnimeDataFromSearch:
             titles.append(res['title_english'])
         if res['title']:
             titles.append(res['title'])
-        return f"<b>Titles:</b> {' / '.join(titles)}"
+        return ' / '.join(titles)
 
     def anime_score(self):
         res = self.anime['data'][0]
