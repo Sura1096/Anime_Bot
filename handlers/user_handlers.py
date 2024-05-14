@@ -1,4 +1,4 @@
-from aiogram import F, Router, filters
+from aiogram import F, Router
 from aiogram.types import Message, CallbackQuery, InlineQuery, InlineQueryResultArticle, InputTextMessageContent
 import hashlib
 from aiogram.filters import Command, CommandStart
