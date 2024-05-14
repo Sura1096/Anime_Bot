@@ -1,9 +1,6 @@
 from aiogram import Router, F
-from aiogram.types import Message, InlineQuery, InlineQueryResultArticle, InputTextMessageContent
-import hashlib
+from aiogram.types import Message
 from lexicon.lexicon import (LEXICON)
-from Jikan_API.parse_data_from_api import ParseAnimeDataFromSearch
-from Jikan_API.API import JikanAPI
 from filters.is_admin import my_filter
 
 
