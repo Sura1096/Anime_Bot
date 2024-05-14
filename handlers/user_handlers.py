@@ -81,13 +81,13 @@ async def process_random_button(callback: CallbackQuery):
         status = parse.anime_status()
 
     await callback.message.answer_photo(photo=image)
-    await callback.message.answer(text=f'{title} 🎲\n'
-                                       f'{type_anime} 🌸\n'
-                                       f'{eps} 🎬\n'
-                                       f'{status} 🔥\n'
-                                       f'{score} 🌟\n'
-                                       f'{year} 📆\n'
-                                       f'{genres} 🗂\n'
+    await callback.message.answer(text=f'🎲 {title}\n'
+                                       f'🌸 {type_anime}\n'
+                                       f'🎬 {eps}\n'
+                                       f'🔥 {status}\n'
+                                       f'🌟 {score}\n'
+                                       f'📆 {year}\n'
+                                       f'🗂 {genres}\n'
                                        f'📜 {desc}\n'
                                        f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
                                   parse_mode='html',
