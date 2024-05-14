@@ -96,7 +96,7 @@ async def process_random_button(callback: CallbackQuery):
 
 
 @router.inline_query()
-async def inline_echo(inline_query: InlineQuery):
+async def inline_mode(inline_query: InlineQuery):
     text = inline_query.query or 'Echo'
     param = {'q': text}
     anime = JikanAPI()
