@@ -136,7 +136,7 @@ class ParseAnimeDataFromSearch:
     def anime_description(self):
         res = self.anime['data'][0]
         if res['synopsis']:
-            return f"<b>Description:</b> {res['synopsis']}"
+            return res['synopsis']
         return None
 
     def anime_type(self):
