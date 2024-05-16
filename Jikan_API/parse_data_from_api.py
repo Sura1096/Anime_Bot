@@ -93,7 +93,7 @@ class ParseAnimeDataFromSearch:
                 return res['images']['jpg']['image_url']
             elif res['images']['webp']['image_url']:
                 return res['images']['webp']['image_url']
-        return '<i>Image has not been added to this title.</i>'
+        return 'Image has not been added to this title.'
 
     def anime_title(self):
         res = self.anime['data'][0]
@@ -107,16 +107,16 @@ class ParseAnimeDataFromSearch:
     def anime_score(self):
         res = self.anime['data'][0]
         if res['score']:
-            return f"<b>Score:</b> {res['score']}"
+            return res['score']
         else:
-            return None
+            return "No score information has been added to this title."
 
     def anime_year(self):
         res = self.anime['data'][0]
         if res['year']:
             return f"<b>Year:</b> {res['year']}"
         else:
-            return "<i>No year information has been added to this title.</i>"
+            return "No year information has been added to this title."
 
     def anime_included_genres_or_themes(self):
         res = self.anime['data'][0]
@@ -131,31 +131,31 @@ class ParseAnimeDataFromSearch:
                 themes.append(theme['name'])
                 return f"<b>Themes:</b> {', '.join(themes)}"
         else:
-            return None
+            return "No genres or themes information has been added to this title."
 
     def anime_description(self):
         res = self.anime['data'][0]
         if res['synopsis']:
-            return res['synopsis']
-        return None
+            return f"<b>Description:</b> {res['synopsis']}"
+        return "No description information has been added to this title."
 
     def anime_type(self):
         res = self.anime['data'][0]
         if res['type']:
             return f"<b>Type:</b> {res['type']}"
         else:
-            return "<i>No type information has been added to this title.</i>"
+            return "No type information has been added to this title."
 
     def anime_episodes(self):
         res = self.anime['data'][0]
         if res['episodes']:
-            return f"<b>Episodes amount:</b> {res['episodes']}"
+            return res['episodes']
         else:
-            return "<i>No episodes information has been added to this title.</i>"
+            return "No episodes information has been added to this title."
 
     def anime_status(self):
         res = self.anime['data'][0]
         if res['status']:
-            return f"<b>Status:</b> {res['status']}"
+            return res['status']
         else:
-            return "<i>No status information has been added to this title.</i>"
+            return "No status information has been added to this title."
