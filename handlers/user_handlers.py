@@ -112,14 +112,15 @@ async def inline_mode(inline_query: InlineQuery):
     eps = parse.anime_episodes()
     status = parse.anime_status()
 
-    input_content = InputTextMessageContent(message_text=f'<b>Titles:</b> {title}\n'
-                                                         f'{type_anime}\n'
-                                                         f'{eps}\n'
-                                                         f'{status}\n'
-                                                         f'{score}\n'
-                                                         f'{year}\n'
-                                                         f'{genres}\n'
-                                                         f'{desc}\n'
+    input_content = InputTextMessageContent(message_text=f'⛩ <b>Titles:</b> {title}\n'
+                                                         f'🌸 {type_anime}\n'
+                                                         f'🎬 <b>Episodes amount:</b> {eps}\n'
+                                                         f'🔥 <b>Status:</b> {status}\n'
+                                                         f'🌟 <b>Score:</b> {score}\n'
+                                                         f'📆 {year}\n'
+                                                         f'🗂 {genres}\n'
+                                                         f'📜 {desc}\n'
+                                                         f'🌌 <b>Image URL:</b> {image}\n'
                                                          f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
                                             parse_mode='html')
     result_id = hashlib.md5(text.encode()).hexdigest()
