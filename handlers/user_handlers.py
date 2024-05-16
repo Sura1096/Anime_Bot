@@ -125,17 +125,12 @@ async def inline_mode(inline_query: InlineQuery):
                                             parse_mode='html')
     result_id = hashlib.md5(text.encode()).hexdigest()
 
-    articles = [InlineQueryResultArticle(
+    articles = InlineQueryResultArticle(
         id=result_id,
-        title=f'{title}',
-        input_message_content=input_content
-    ),
-        InlineQueryResultPhoto(
-            type='photo',
-            id=result_id,
-            photo_url=image,
-            thumbnail_url=image
-        )
-    ]
+        title=f'⛩ {title}',
+        input_message_content=input_content,
+        thumbnail_url=image,
+        description=f'🌟 Score: {score}, 🔥 Status: {status}, 🎬 Episodes: {eps}'
+    )
 
-    await inline_query.answer(results=articles, cache_time=1, is_personal=True)
+    await inline_query.answer(results=[articles], cache_time=1, is_personal=True)
