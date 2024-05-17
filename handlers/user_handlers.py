@@ -5,7 +5,7 @@ from aiogram.filters import Command, CommandStart
 from lexicon.lexicon import LEXICON
 from keyboards.keyboard_utils import (user_choice_buttons, help_command_button,
                                       genres_buttons, apply_filter_for_genres_button, end_home_button,
-                                      random_home_buttons)
+                                      random_home_buttons, popular_anime_buttons)
 from aiogram_widgets.pagination import KeyboardPaginator
 from Jikan_API.API import JikanAPI
 from Jikan_API.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
