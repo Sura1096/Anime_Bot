@@ -95,6 +95,20 @@ async def process_random_button(callback: CallbackQuery):
     await callback.answer()
 
 
+@router.callback_query(F.data == 'popular anime')
+async def process_popular_buttons(callback: CallbackQuery):
+    paginator = KeyboardPaginator(
+        data=popular_anime_buttons(),
+        additional_buttons=[end_home_button()],
+        router=router,
+        per_page=5,
+        per_row=(1, 1)
+    )
+    await callback.message.answer(text='Here is all popular anime 🔥',
+                                  reply_markup=paginator.as_markup())
+    await callback.answer()
+
+
 @router.inline_query()
 async def inline_mode(inline_query: InlineQuery):
     text = inline_query.query or 'Echo'
