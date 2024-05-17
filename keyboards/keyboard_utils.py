@@ -57,3 +57,13 @@ def random_home_buttons():
     ]
     keyboard_builder.row(*home_random_buttons, width=1)
     return keyboard_builder
+
+
+def popular_anime_buttons():
+    anime = Jikan()
+    data = anime.top('anime')
+    buttons: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text=f'⛩ {item["title"]}',
+                             switch_inline_query_current_chat=f'{item["title"]}') for item in data['data']
+    ]
+    return buttons
