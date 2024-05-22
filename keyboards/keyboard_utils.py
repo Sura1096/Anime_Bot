@@ -2,6 +2,7 @@ from anime_genres.genres_list import genres
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from jikanpy import Jikan
+from Jikan_API.API import JikanAPI
 
 
 def user_choice_buttons():
@@ -77,3 +78,15 @@ def popular_anime_buttons():
                              switch_inline_query_current_chat=f'{item["title"]}') for item in data['data']
     ]
     return buttons
+
+
+def genres_anime_buttons(params):
+    anime = JikanAPI()
+    data = anime.search_by_genres_id({'genres': params})
+    if data['data']:
+        buttons: list[InlineKeyboardButton] = [
+            InlineKeyboardButton(text=f'⛩ {item["title"]}',
+                                 switch_inline_query_current_chat=f'{item["title"]}') for item in data['data']
+        ]
+        return buttons
+    return None
