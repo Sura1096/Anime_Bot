@@ -35,6 +35,16 @@ def genres_buttons():
     return buttons
 
 
+def edit_genres_buttons(selected_genres):
+    buttons = []
+    for genre_id, genre_name in genres.items():
+        if genre_id in selected_genres:
+            buttons.append(InlineKeyboardButton(text=f'🟢 {genre_name}', callback_data=f'🟢_{genre_id}'))
+        else:
+            buttons.append(InlineKeyboardButton(text=f'🔴 {genre_name}', callback_data=f'🔴_{genre_id}'))
+    return buttons
+
+
 def apply_filter_for_genres_button():
     apply_filter: list[InlineKeyboardButton] = [
         InlineKeyboardButton(text='Apply filter 🟢', callback_data='apply filter for genres')
