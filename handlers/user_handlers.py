@@ -28,7 +28,7 @@ async def process_help_command(message: Message):
 
 
 @router.callback_query(F.data == 'genres')
-async def process_genres_buttons(callback: CallbackQuery):
+async def process_genres_button(callback: CallbackQuery, state: FSMContext):
     paginator = KeyboardPaginator(
         data=genres_buttons(),
         additional_buttons=[apply_filter_for_genres_button(), end_home_button()],
