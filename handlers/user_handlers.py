@@ -41,6 +41,17 @@ async def process_genres_button(callback: CallbackQuery, state: FSMContext):
     await callback.message.answer(text='Select genres ❤️‍🔥', reply_markup=paginator.as_markup())
 
 
+async def update_genres_message(message, selected_genres):
+    paginator = KeyboardPaginator(
+        data=edit_genres_buttons(selected_genres),
+        additional_buttons=[apply_filter_for_genres_button(), end_home_button()],
+        router=router,
+        per_page=10,
+        per_row=(3, 3)
+    )
+    await message.edit_reply_markup(reply_markup=paginator.as_markup())
+
+
 @router.callback_query(F.data == 'home page')
 async def process_home_page_button(callback: CallbackQuery):
     await callback.message.answer(text=LEXICON['/start'],
