@@ -80,6 +80,27 @@ async def genre_unselect_handler(callback_query: CallbackQuery, state: FSMContex
     await update_genres_message(callback_query.message, selected_genres)
 
 
+@router.callback_query(F.data == 'apply filter for genres')
+async def apply_filter_handler(callback_query: CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    selected_genres = data.get('selected_genres', [])
+    generate_buttons = genres_anime_buttons(', '.join(str(genre)) for genre in selected_genres)
+    if generate_buttons:
+        paginator = KeyboardPaginator(
+            data=generate_buttons,
+            additional_buttons=[end_home_button()],
+            router=router,
+            per_page=5,
+            per_row=(1, 1)
+        )
+        await callback_query.message.answer(text='Here all anime with your selected genres 🪭',
+                                            reply_markup=paginator.as_markup())
+    else:
+        await callback_query.message.answer(text='There is no anime with your selected genres 💔')
+    await state.clear()
+    await callback_query.answer()
+
+
 @router.callback_query(F.data == 'home page')
 async def process_home_page_button(callback: CallbackQuery):
     await callback.message.answer(text=LEXICON['/start'],
