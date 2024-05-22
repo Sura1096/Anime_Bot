@@ -66,6 +66,20 @@ async def genre_select_handler(callback_query: CallbackQuery, state: FSMContext)
     await update_genres_message(callback_query.message, selected_genres)
 
 
+@router.callback_query(SelectGenres.selected_genres, lambda c: c.data.startswith('🟢_'))
+async def genre_unselect_handler(callback_query: CallbackQuery, state: FSMContext):
+    genre_id = int(callback_query.data.split('_')[1])
+
+    data = await state.get_data()
+    selected_genres = data.get('selected_genres', [])
+
+    if genre_id in selected_genres:
+        selected_genres.remove(genre_id)
+        await state.update_data(selected_genres=selected_genres)
+
+    await update_genres_message(callback_query.message, selected_genres)
+
+
 @router.callback_query(F.data == 'home page')
 async def process_home_page_button(callback: CallbackQuery):
     await callback.message.answer(text=LEXICON['/start'],
