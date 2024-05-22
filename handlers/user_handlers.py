@@ -36,9 +36,7 @@ async def process_genres_button(callback: CallbackQuery, state: FSMContext):
         per_page=10,
         per_row=(3, 3)
     )
-    await callback.message.answer(text='Here is all genres 🗂',
-                                  reply_markup=paginator.as_markup())
-    await callback.answer()
+    await callback.message.answer(text='Select genres ❤️‍🔥', reply_markup=paginator.as_markup())
 
 
 @router.callback_query(F.data == 'home page')
