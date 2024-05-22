@@ -30,7 +30,7 @@ def help_command_button():
 
 def genres_buttons():
     buttons: list[InlineKeyboardButton] = [
-        InlineKeyboardButton(text=f'{genres[genre_id]}', callback_data=str(genre_id)) for genre_id in genres
+        InlineKeyboardButton(text=f'🔴 {genres[genre_id]}', callback_data='🔴_' + str(genre_id)) for genre_id in genres
     ]
     return buttons
 
