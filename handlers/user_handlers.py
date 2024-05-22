@@ -10,6 +10,7 @@ from aiogram_widgets.pagination import KeyboardPaginator
 from Jikan_API.API import JikanAPI
 from Jikan_API.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
 from aiogram.fsm.context import FSMContext
+from states.states import SelectGenres
 
 
 router = Router()
@@ -36,6 +37,7 @@ async def process_genres_button(callback: CallbackQuery, state: FSMContext):
         per_page=10,
         per_row=(3, 3)
     )
+    await state.set_state(SelectGenres.selected_genres)
     await callback.message.answer(text='Select genres ❤️‍🔥', reply_markup=paginator.as_markup())
 
 
