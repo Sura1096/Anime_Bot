@@ -9,4 +9,4 @@ router = Router()
 
 @router.message(my_filter)
 async def rest_message_handler(message: Message):
-    await message.answer(text=LEXICON['unknown'])
+    await message.delete()
