@@ -1,5 +1,5 @@
-from API import JikanAPI
-from parse_data_from_api import ParseAnimeData
+from .API import JikanAPI
+from .parse_data_from_api import ParseAnimeData
 
 
 def get_random_anime():
