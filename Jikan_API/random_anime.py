@@ -19,3 +19,13 @@ def get_random_anime():
     status = parse.anime_status()
 
     return image, title, score, year, genres, desc, type_anime, eps, status
+
+
+def random_anime(anime_info):
+    random_anime_dict = {}
+    info_items = ['image', 'title', 'score', 'year', 'genres', 'desc',
+                  'type_anime', 'eps', 'status']
+    for i in range(len(anime_info)):
+        random_anime_dict[info_items[i]] = anime_info[i]
+
+    return random_anime_dict
