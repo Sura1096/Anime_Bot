@@ -25,7 +25,7 @@ class ParseAnimeData:
         if res['score']:
             return f"<b>Score:</b> {res['score']}"
         else:
-            return None
+            return "<i>No score information has been added to this title.</i>"
 
     def anime_year(self):
         res = self.anime['data']
@@ -47,13 +47,13 @@ class ParseAnimeData:
                 themes.append(theme['name'])
                 return f"<b>Themes:</b> {', '.join(themes)}"
         else:
-            return None
+            return "<i>No genres/themes information has been added to this title.</i>"
 
     def anime_description(self):
         res = self.anime['data']
         if res['synopsis']:
             return f"<b>Description:</b> {res['synopsis']}"
-        return None
+        return "<i>No description information has been added to this title.</i>"
 
     def anime_type(self):
         res = self.anime['data']
