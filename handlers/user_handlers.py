@@ -8,7 +8,8 @@ from keyboards.keyboard_utils import (user_choice_buttons, help_command_button,
                                       random_home_buttons, popular_anime_buttons, edit_genres_buttons, genres_anime_buttons)
 from aiogram_widgets.pagination import KeyboardPaginator
 from Jikan_API.API import JikanAPI
-from Jikan_API.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
+from Jikan_API.random_anime import get_random_anime, random_anime
+from Jikan_API.parse_data_from_api import ParseAnimeDataFromSearch
 from aiogram.fsm.context import FSMContext
 from states.states import SelectGenres
 
@@ -110,46 +111,18 @@ async def process_home_page_button(callback: CallbackQuery):
 
 @router.callback_query(F.data == 'random anime')
 async def process_random_button(callback: CallbackQuery):
-    anime = JikanAPI()
-    data = anime.get_random_anime()
-    while data == 'Not found':
-        data = anime.get_random_anime()
-    parse = ParseAnimeData(data)
-    image = parse.anime_image()
-    title = parse.anime_title()
-    score = parse.anime_score()
-    year = parse.anime_year()
-    genres = parse.anime_included_genres_or_themes()
-    desc = parse.anime_description()
-    type_anime = parse.anime_type()
-    eps = parse.anime_episodes()
-    status = parse.anime_status()
+    anime_items = get_random_anime()
+    full_anime_info = random_anime(anime_items)
 
-    while (score is None) or (genres is None) or (desc is None):
-        anime = JikanAPI()
-        data = anime.get_random_anime()
-        while data == 'Not found':
-            data = anime.get_random_anime()
-        parse = ParseAnimeData(data)
-        image = parse.anime_image()
-        title = parse.anime_title()
-        score = parse.anime_score()
-        year = parse.anime_year()
-        genres = parse.anime_included_genres_or_themes()
-        desc = parse.anime_description()
-        type_anime = parse.anime_type()
-        eps = parse.anime_episodes()
-        status = parse.anime_status()
-
-    await callback.message.answer_photo(photo=image)
-    await callback.message.answer(text=f'🎲 {title}\n'
-                                       f'🌸 {type_anime}\n'
-                                       f'🎬 {eps}\n'
-                                       f'🔥 {status}\n'
-                                       f'🌟 {score}\n'
-                                       f'📆 {year}\n'
-                                       f'🗂 {genres}\n'
-                                       f'📜 {desc}\n'
+    await callback.message.answer_photo(photo=full_anime_info["image"])
+    await callback.message.answer(text=f'🎲 {full_anime_info["title"]}\n'
+                                       f'🌸 {full_anime_info["type_anime"]}\n'
+                                       f'🎬 {full_anime_info["eps"]}\n'
+                                       f'🔥 {full_anime_info["status"]}\n'
+                                       f'🌟 {full_anime_info["score"]}\n'
+                                       f'📆 {full_anime_info["year"]}\n'
+                                       f'🗂 {full_anime_info["genres"]}\n'
+                                       f'📜 {full_anime_info["desc"]}\n'
                                        f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
                                   parse_mode='html',
                                   reply_markup=random_home_buttons().as_markup())
