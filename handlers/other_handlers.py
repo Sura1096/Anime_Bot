@@ -1,6 +1,5 @@
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.types import Message
-from lexicon.lexicon import (LEXICON)
 from filters.is_admin import my_filter
 
 
