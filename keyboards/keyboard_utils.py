@@ -38,8 +38,9 @@ def genres_buttons():
 
 
 def edit_genres_buttons(selected_genres):
+    genres_dict = genres()
     buttons = []
-    for genre_id, genre_name in genres.items():
+    for genre_id, genre_name in genres_dict.items():
         if genre_id in selected_genres:
             buttons.append(InlineKeyboardButton(text=f'🟢 {genre_name}', callback_data=f'🟢_{genre_id}'))
         else:
