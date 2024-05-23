@@ -30,8 +30,9 @@ def help_command_button():
 
 
 def genres_buttons():
+    genres_dict = genres()
     buttons: list[InlineKeyboardButton] = [
-        InlineKeyboardButton(text=f'🔴 {genres[genre_id]}', callback_data='🔴_' + str(genre_id)) for genre_id in genres
+        InlineKeyboardButton(text=f'🔴 {genres_dict[genre_id]}', callback_data='🔴_' + str(genre_id)) for genre_id in genres_dict
     ]
     return buttons
 
