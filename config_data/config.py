@@ -3,14 +3,6 @@ from environs import Env
 
 
 @dataclass
-class DatabaseConfig:
-    database: str  # Database
-    db_host: str  # Database URL
-    db_user: str  # Database Username
-    db_password: str  # Database password
-
-
-@dataclass
 class TgBot:
     token: str  # Bot token
 
