@@ -6,6 +6,12 @@ from keyboards.set_menu import set_main_menu
 
 
 async def main() -> None:
+    """
+    Initializes and starts the Telegram bot.
+
+    This function loads the configuration, sets up the bot and dispatcher,
+    includes handlers, and starts polling for updates.
+    """
     config = load_config('.env')
     bot_token = config.tg_bot.token
     bot = Bot(token=bot_token)
