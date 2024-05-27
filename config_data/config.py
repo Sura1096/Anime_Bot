@@ -4,6 +4,12 @@ from environs import Env
 
 @dataclass
 class TgBot:
+    """
+    Dataclass for storing Telegram bot configuration.
+
+    Attributes:
+        token (str): The token used to authenticate the bot with the Telegram API.
+    """
     token: str  # Bot token
 
 
