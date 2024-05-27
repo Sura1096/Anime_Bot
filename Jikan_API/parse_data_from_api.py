@@ -90,9 +90,7 @@ class ParseAnimeDataFromSearch:
         res = self.anime['data'][0]
         if res['images']:
             if res['images']['jpg']['large_image_url']:
-                return res['images']['jpg']['large_image_url']
-            elif res['images']['webp']['image_url']:
-                return res['images']['webp']['image_url']
+                return f"<a href='{res['images']['jpg']['large_image_url']}'>Image:</a>"
         return 'Image has not been added to this title.'
 
     def anime_title(self):
