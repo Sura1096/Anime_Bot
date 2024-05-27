@@ -15,6 +15,12 @@ class TgBot:
 
 @dataclass
 class Config:
+    """
+    Dataclass for storing the configuration of the application.
+
+    Attributes:
+        tg_bot (TgBot): An instance of the TgBot dataclass containing the bot's configuration.
+    """
     tg_bot: TgBot
 
 
