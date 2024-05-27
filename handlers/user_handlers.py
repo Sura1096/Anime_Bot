@@ -146,7 +146,7 @@ async def process_popular_buttons(callback: CallbackQuery):
 @router.inline_query()
 async def inline_mode(inline_query: InlineQuery):
     text = inline_query.query or 'Echo'
-    param = {'q': text}
+    param = {'q': text.capitalize()}
     anime = JikanAPI()
     data = anime.get_searched_anime(param)
     parse = ParseAnimeDataFromSearch(data)
