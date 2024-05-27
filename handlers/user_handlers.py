@@ -168,9 +168,8 @@ async def inline_mode(inline_query: InlineQuery):
                                                          f'📆 {year}\n'
                                                          f'🗂 {genres}\n'
                                                          f'📜 {desc}\n'
-                                                         f'\n🌌 <b>Image URL:</b>'
-                                                         f'\n{image}\n'
-                                                         f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
+                                                         f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆'
+                                                         f'\n🌌 <a href="{image}">Image:</a>',
                                             parse_mode='html')
     result_id = hashlib.md5(text.encode()).hexdigest()
 
