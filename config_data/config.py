@@ -25,6 +25,15 @@ class Config:
 
 
 def load_config(path: str | None = None) -> Config:
+    """
+    Loads the configuration from a .env file and returns a Config object.
+
+    Args:
+        path (str | None): The path to the .env file. If None, the default location will be used.
+
+    Returns:
+        Config: A Config object containing the loaded configuration.
+    """
     env: Env = Env()
     env.read_env(path)
 
