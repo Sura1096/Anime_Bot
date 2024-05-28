@@ -1,8 +1,8 @@
 from aiogram import F, Router
 from aiogram.types import CallbackQuery
-from keyboards.keyboard_utils import (user_choice_buttons, help_command_button,
-                                      genres_buttons, apply_filter_for_genres_button, end_home_button,
-                                      random_home_buttons, popular_anime_buttons, edit_genres_buttons, genres_anime_buttons)
+from keyboards.keyboard_utils import (genres_buttons, apply_filter_for_genres_button, end_home_button,
+                                      random_home_buttons, popular_anime_buttons, edit_genres_buttons,
+                                      genres_anime_buttons)
 from aiogram_widgets.pagination import KeyboardPaginator
 from Jikan_API.random_anime import get_random_anime, random_anime
 from aiogram.fsm.context import FSMContext
