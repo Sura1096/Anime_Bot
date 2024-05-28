@@ -10,6 +10,18 @@ router = Router()
 
 @router.inline_query()
 async def inline_mode(inline_query: InlineQuery):
+    """
+    Handles inline queries and returns search results for anime based on the user's input.
+
+    This handler is triggered when the bot receives an inline query from a user. It processes the
+    query, searches for matching anime using the Jikan API, and formats the results into a structured
+    response that includes the anime's title, type, number of episodes, status, score, release year,
+    genres, description, and an image link.
+
+    Args:
+        inline_query (InlineQuery): The inline query object from aiogram representing the incoming
+        inline query from the user.
+    """
     text = inline_query.query or 'Echo'
     param = {'q': text.capitalize()}
     anime = JikanAPI()
