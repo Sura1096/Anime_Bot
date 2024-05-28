@@ -2,9 +2,7 @@ from aiogram import F, Router
 from aiogram.types import Message, CallbackQuery
 from aiogram.filters import Command, CommandStart
 from lexicon.lexicon import LEXICON
-from keyboards.keyboard_utils import (user_choice_buttons, help_command_button,
-                                      genres_buttons, apply_filter_for_genres_button, end_home_button,
-                                      random_home_buttons, popular_anime_buttons, edit_genres_buttons, genres_anime_buttons)
+from keyboards.keyboard_utils import user_choice_buttons, help_command_button
 
 
 router = Router()
