@@ -135,7 +135,7 @@ def popular_anime_buttons() -> List[InlineKeyboardButton]:
     return buttons
 
 
-def genres_anime_buttons(params: str) -> Optional[List[InlineKeyboardButton]]:
+async def genres_anime_buttons(params: str) -> Optional[List[InlineKeyboardButton]]:
     """
      Create inline keyboard buttons for anime filtered by genres.
 
@@ -147,7 +147,7 @@ def genres_anime_buttons(params: str) -> Optional[List[InlineKeyboardButton]]:
         or None if no data is found.
     """
     anime = JikanAPI()
-    data = anime.search_by_genres_id({'genres': params})
+    data = await anime.search_by_genres_id({'genres': params})
     if data['data']:
         buttons: list[InlineKeyboardButton] = [
             InlineKeyboardButton(text=f'⛩ {item["title"]}',
