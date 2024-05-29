@@ -1,7 +1,7 @@
 from aiogram.types import Message
 
 
-def my_filter(message: Message):
+def my_filter(message: Message) -> bool:
     """
     Filter function for rest_message_handler.
 
