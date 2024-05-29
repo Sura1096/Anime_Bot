@@ -1,8 +1,27 @@
 from .API import JikanAPI
 from .parse_data_from_api import ParseAnimeData
+from typing import Dict
 
 
-def get_random_anime():
+def get_random_anime() -> tuple:
+    """
+    Retrieve and parse data of a random anime.
+
+    This function uses the JikanAPI to fetch data of a random anime and then parses
+    the data to extract specific information.
+
+    Returns:
+        tuple: A tuple containing the following elements in order:
+            - image (str): The URL of the anime's image.
+            - title (str): The title(s) of the anime.
+            - score (str): The score of the anime.
+            - year (str): The release year of the anime.
+            - genres (str): The genres or themes of the anime.
+            - desc (str): The description (synopsis) of the anime.
+            - type_anime (str): The type of the anime (e.g., TV, Movie).
+            - eps (str): The number of episodes of the anime.
+            - status (str): The status of the anime (e.g., Airing, Finished).
+    """
     anime = JikanAPI()
     data = anime.get_random_anime()
     while data == 'Not found':
@@ -21,7 +40,34 @@ def get_random_anime():
     return image, title, score, year, genres, desc, type_anime, eps, status
 
 
-def random_anime(anime_info):
+def random_anime(anime_info) -> Dict[str, str]:
+    """
+    Convert a tuple of anime information into a dictionary.
+
+    Args:
+        anime_info (tuple): A tuple containing the following elements in order:
+            - image (str): The URL of the anime's image.
+            - title (str): The title(s) of the anime.
+            - score (str): The score of the anime.
+            - year (str): The release year of the anime.
+            - genres (str): The genres or themes of the anime.
+            - desc (str): The description (synopsis) of the anime.
+            - type_anime (str): The type of the anime (e.g., TV, Movie).
+            - eps (str): The number of episodes of the anime.
+            - status (str): The status of the anime (e.g., Airing, Finished).
+
+    Returns:
+        Dict[str, str]: A dictionary with the following keys and their corresponding values from the tuple:
+            - 'image': The URL of the anime's image.
+            - 'title': The title(s) of the anime.
+            - 'score': The score of the anime.
+            - 'year': The release year of the anime.
+            - 'genres': The genres or themes of the anime.
+            - 'desc': The description (synopsis) of the anime.
+            - 'type_anime': The type of the anime (e.g., TV, Movie).
+            - 'eps': The number of episodes of the anime.
+            - 'status': The status of the anime (e.g., Airing, Finished).
+    """
     random_anime_dict = {}
     info_items = ['image', 'title', 'score', 'year', 'genres', 'desc',
                   'type_anime', 'eps', 'status']
