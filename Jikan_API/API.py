@@ -24,7 +24,19 @@ class JikanAPI:
         get_searched_anime(anime_name_parameter: dict):
             Search for anime by name.
     """
-    def __init__(self, base_url='https://api.jikan.moe/v4'):
+    def __init__(
+            self,
+            base_url='https://api.jikan.moe/v4'
+    ) -> None:
+        """
+        Initialize the JikanAPI with a base URL.
+
+        Args:
+            base_url (str): The base URL for the Jikan API. Defaults to 'https://api.jikan.moe/v4'.
+
+        Returns:
+            JikanAPI: Instance of JikanAPI
+        """
         self.base_url = base_url
 
     def get_anime_by_id(self, anime_id: int):
