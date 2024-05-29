@@ -36,6 +36,9 @@ class JikanAPI:
 
         Returns:
             JikanAPI: Instance of JikanAPI
+
+        Examples:
+            anime = JikanAPI()
         """
         self.base_url = base_url
 
@@ -49,6 +52,9 @@ class JikanAPI:
         Returns:
             dict: A dictionary containing the anime details if found.
             str: 'Not found' if the anime is not found or the request fails.
+
+        Examples:
+            anime.get_anime_by_id(5)
         """
         res = requests.get(f'{self.base_url}/anime/{anime_id}')
         if res.status_code != 200:
@@ -62,6 +68,9 @@ class JikanAPI:
         Returns:
             dict: A dictionary containing a list of all anime genres.
             str: 'Not found' if the request fails.
+
+        Examples:
+            anime.genres()
         """
         res = requests.get(f'{self.base_url}/genres/anime')
         if res.status_code != 200:
@@ -80,10 +89,8 @@ class JikanAPI:
             dict: A dictionary containing the search results.
             str: 'Not found' if the search fails or no results are found.
 
-        Example of an input params:
-            params = {
-                "genres": "1,2,3"
-                }
+        Example:
+            anime.search_by_genres_id({'genres': '1, 2, 3'})
         """
         full_url = f'{self.base_url}/anime'
         res = requests.get(full_url, params=params)
@@ -98,6 +105,9 @@ class JikanAPI:
         Returns:
             dict: A dictionary containing the random anime details if found.
             str: 'Not found' if the request fails.
+
+        Example:
+            anime.get_random_anime()
         """
         res = requests.get(f'{self.base_url}/random/anime')
         if res.status_code != 200:
@@ -116,10 +126,8 @@ class JikanAPI:
             dict: A dictionary containing the search results.
             str: 'Not found' if the search fails or no results are found.
 
-        Example of an input params:
-            params = {
-                "genres": "1,2,3" Replace with users parameters
-                }
+        Example:
+            anime.get_searched_anime({'q': 'Oshi no ko'})
         """
         full_url = f'{self.base_url}/anime'
         res = requests.get(full_url, params=anime_name_parameter)
