@@ -127,7 +127,8 @@ async def apply_filter_handler(callback_query: CallbackQuery, state: FSMContext)
     """
     data = await state.get_data()
     selected_genres = data.get('selected_genres', [])
-    generate_buttons = genres_anime_buttons(', '.join(str(genre)) for genre in selected_genres)
+    ids = ', '.join(str(genre) for genre in selected_genres)
+    generate_buttons = await genres_anime_buttons(ids)
     if generate_buttons:
         paginator = KeyboardPaginator(
             data=generate_buttons,
@@ -158,7 +159,7 @@ async def process_random_button(callback: CallbackQuery):
         callback query when the 'random anime' button is clicked.
 
     """
-    anime_items = get_random_anime()
+    anime_items = await get_random_anime()
     full_anime_info = random_anime(anime_items)
 
     await callback.message.answer_photo(photo=full_anime_info["image"])
