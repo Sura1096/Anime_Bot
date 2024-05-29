@@ -3,7 +3,7 @@ from .parse_data_from_api import ParseAnimeData
 from typing import Dict
 
 
-def get_random_anime() -> tuple:
+async def get_random_anime() -> tuple:
     """
     Retrieve and parse data of a random anime.
 
@@ -23,7 +23,7 @@ def get_random_anime() -> tuple:
             - status (str): The status of the anime (e.g., Airing, Finished).
     """
     anime = JikanAPI()
-    data = anime.get_random_anime()
+    data = await anime.get_random_anime()
     while data == 'Not found':
         data = anime.get_random_anime()
     parse = ParseAnimeData(data)
