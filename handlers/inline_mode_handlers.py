@@ -25,7 +25,7 @@ async def inline_mode(inline_query: InlineQuery):
     text = inline_query.query or 'Echo'
     param = {'q': text.capitalize()}
     anime = JikanAPI()
-    data = anime.get_searched_anime(param)
+    data = await anime.get_searched_anime(param)
     parse = ParseAnimeDataFromSearch(data)
     image = parse.anime_image()
     title = parse.anime_title()
