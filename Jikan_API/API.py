@@ -1,4 +1,5 @@
 import requests
+from typing import Dict, Any
 
 
 class JikanAPI:
@@ -42,7 +43,10 @@ class JikanAPI:
         """
         self.base_url = base_url
 
-    def get_anime_by_id(self, anime_id: int):
+    def get_anime_by_id(
+            self,
+            anime_id: int
+    ) -> Dict[str, Any] | str:
         """
         Retrieve details of an anime by its ID.
 
@@ -61,7 +65,7 @@ class JikanAPI:
             return 'Not found'
         return res.json()
 
-    def genres(self):
+    def genres(self) -> Dict[str, Any] | str:
         """
         Retrieve a list of all anime genres.
 
@@ -77,7 +81,10 @@ class JikanAPI:
             return 'Not found'
         return res.json()
 
-    def search_by_genres_id(self, params):
+    def search_by_genres_id(
+            self,
+            params
+    ) -> Dict[str, Any] | str:
         """
         Search for anime by genre IDs.
 
@@ -98,7 +105,7 @@ class JikanAPI:
             return 'Not found'
         return res.json()
 
-    def get_random_anime(self):
+    def get_random_anime(self) -> Dict[str, Any] | str:
         """
         Retrieve details of a random anime.
 
@@ -114,7 +121,10 @@ class JikanAPI:
             return 'Not found'
         return res.json()
 
-    def get_searched_anime(self, anime_name_parameter):
+    def get_searched_anime(
+            self,
+            anime_name_parameter
+    ) -> Dict[str, Any] | str:
         """
         Search for anime by name.
 
