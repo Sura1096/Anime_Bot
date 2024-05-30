@@ -3,6 +3,7 @@ from aiogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessag
 import hashlib
 from Jikan_API.API import JikanAPI
 from Jikan_API.parse_data_from_api import ParseAnimeDataFromSearch
+from keyboards.keyboard_utils import user_choice_buttons
 
 
 router = Router()
@@ -54,6 +55,7 @@ async def inline_mode(inline_query: InlineQuery):
         id=result_id,
         title=f'⛩ {title}',
         input_message_content=input_content,
+        reply_markup=user_choice_buttons().as_markup(),
         thumbnail_url=image,
         description=f'🌟 Score: {score}, 🔥 Status: {status}, 🎬 Episodes: {eps}'
     )
