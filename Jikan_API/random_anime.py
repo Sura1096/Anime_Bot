@@ -25,7 +25,7 @@ async def get_random_anime() -> tuple:
     anime = JikanAPI()
     data = await anime.get_random_anime()
     while data == 'Not found':
-        data = anime.get_random_anime()
+        data = await anime.get_random_anime()
     parse = ParseAnimeData(data)
     image = parse.anime_image()
     title = parse.anime_title()
