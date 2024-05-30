@@ -159,22 +159,28 @@ async def process_random_button(callback: CallbackQuery):
         callback query when the 'random anime' button is clicked.
 
     """
-    anime_items = await get_random_anime()
-    full_anime_info = random_anime(anime_items)
+    try:
+        anime_items = await get_random_anime()
+        full_anime_info = random_anime(anime_items)
 
-    await callback.message.answer_photo(photo=full_anime_info["image"])
-    await callback.message.answer(text=f'🎲 {full_anime_info["title"]}\n'
-                                       f'🌸 {full_anime_info["type_anime"]}\n'
-                                       f'🎬 {full_anime_info["eps"]}\n'
-                                       f'🔥 {full_anime_info["status"]}\n'
-                                       f'🌟 {full_anime_info["score"]}\n'
-                                       f'📆 {full_anime_info["year"]}\n'
-                                       f'🗂 {full_anime_info["genres"]}\n'
-                                       f'📜 {full_anime_info["desc"]}\n'
-                                       f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
-                                  parse_mode='html',
-                                  reply_markup=random_home_buttons().as_markup())
-    await callback.answer()
+        await callback.message.answer_photo(photo=full_anime_info["image"])
+        await callback.message.answer(text=f'🎲 {full_anime_info["title"]}\n'
+                                           f'🌸 {full_anime_info["type_anime"]}\n'
+                                           f'🎬 {full_anime_info["eps"]}\n'
+                                           f'🔥 {full_anime_info["status"]}\n'
+                                           f'🌟 {full_anime_info["score"]}\n'
+                                           f'📆 {full_anime_info["year"]}\n'
+                                           f'🗂 {full_anime_info["genres"]}\n'
+                                           f'📜 {full_anime_info["desc"]}\n'
+                                           f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
+                                      parse_mode='html',
+                                      reply_markup=random_home_buttons().as_markup())
+    except Exception as e:
+        await callback.message.answer(text='Oooops 👀\n'
+                                           'Something went wrong ☠️.\n'
+                                           'Please press the button "Next 🟢" one more time ⬆️.')
+    finally:
+        await callback.answer()
 
 
 @router.callback_query(F.data == 'popular anime')
