@@ -1,9 +1,8 @@
 from aiogram import Router
 from aiogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessageContent
 import hashlib
-from Jikan_API.API import JikanAPI
-from Jikan_API.parse_data_from_api import ParseAnimeDataFromSearch
-from keyboards.keyboard_utils import user_choice_buttons
+from external_services.API import JikanAPI
+from external_services.parse_data_from_api import ParseAnimeDataFromSearch
 
 
 router = Router()
