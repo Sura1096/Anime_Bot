@@ -4,7 +4,7 @@ from keyboards.keyboard_utils import (genres_buttons, apply_filter_for_genres_bu
                                       random_home_buttons, popular_anime_buttons, edit_genres_buttons,
                                       genres_anime_buttons)
 from aiogram_widgets.pagination import KeyboardPaginator
-from Jikan_API.random_anime import get_random_anime, random_anime
+from external_services.random_anime import get_random_anime, random_anime
 from aiogram.fsm.context import FSMContext
 from states.states import SelectGenres
 
