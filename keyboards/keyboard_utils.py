@@ -2,7 +2,7 @@ from anime_genres.genres_list import genres
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from jikanpy import Jikan
-from Jikan_API.API import JikanAPI
+from external_services.API import JikanAPI
 from typing import List, Optional
 
 
