@@ -35,6 +35,7 @@ async def process_genres_button(callback: CallbackQuery, state: FSMContext):
     )
     await state.set_state(SelectGenres.selected_genres)
     await callback.message.answer(text='Select genres ❤️‍🔥', reply_markup=paginator.as_markup())
+    await callback.answer()
 
 
 async def update_genres_message(message, selected_genres):
