@@ -47,3 +47,34 @@ async def test_process_help_command():
             text=LEXICON['/help'],
             reply_markup=help_command_button()
         )
+
+
+@pytest.mark.asyncio
+async def test_process_home_page_button():
+    message = SimpleNamespace(
+        message_id=1,
+        date=0,
+        chat=Chat(id=1, type='private'),
+        text='/start',
+        answer=AsyncMock()
+    )
+
+    callback = SimpleNamespace(
+        id='123',
+        from_user=None,
+        message=message,
+        data='home page',
+        chat_instance='123',
+        answer=AsyncMock()
+    )
+
+    with (patch.object(message, 'answer', new=AsyncMock()) as mock_message_answer,
+          patch.object(callback, 'answer', new=AsyncMock()) as mock_callback_answer):
+        await process_home_page_button(callback)
+
+        mock_message_answer.assert_awaited_once_with(
+            text=LEXICON['/start'],
+            reply_markup=user_choice_buttons().as_markup()
+        )
+
+        mock_callback_answer.assert_awaited_once_with()
