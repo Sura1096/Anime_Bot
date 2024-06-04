@@ -28,3 +28,22 @@ async def test_process_start_command():
             text=LEXICON['/start'],
             reply_markup=user_choice_buttons().as_markup()
         )
+
+
+@pytest.mark.asyncio
+async def test_process_help_command():
+    message = SimpleNamespace(
+        message_id=1,
+        date=0,
+        chat=Chat(id=1, type='private'),
+        text='/help',
+        answer=AsyncMock()
+    )
+
+    with patch.object(message, 'answer', new=AsyncMock()) as mock_answer:
+        await process_help_command(message)
+
+        mock_answer.assert_awaited_once_with(
+            text=LEXICON['/help'],
+            reply_markup=help_command_button()
+        )
