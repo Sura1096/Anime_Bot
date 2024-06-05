@@ -1,4 +1,5 @@
 import aiohttp
+from aiohttp import ClientTimeout
 from typing import Dict, Any
 
 
@@ -61,7 +62,10 @@ class JikanAPI:
             anime.get_anime_by_id(5)
         """
         async with aiohttp.ClientSession() as session:
-            async with session.get(f'{self.base_url}/anime/{anime_id}') as res:
+            async with session.get(
+                    f'{self.base_url}/anime/{anime_id}',
+                    timeout=ClientTimeout(total=5)
+            ) as res:
                 if res.status != 200:
                     return 'Not found'
                 return await res.json()
@@ -78,7 +82,10 @@ class JikanAPI:
             anime.genres()
         """
         async with aiohttp.ClientSession() as session:
-            async with session.get(f'{self.base_url}/genres/anime') as res:
+            async with session.get(
+                    f'{self.base_url}/genres/anime',
+                    timeout=ClientTimeout(total=5)
+            ) as res:
                 if res.status != 200:
                     return 'Not found'
                 return await res.json()
@@ -103,7 +110,11 @@ class JikanAPI:
         """
         full_url = f'{self.base_url}/anime'
         async with aiohttp.ClientSession() as session:
-            async with session.get(full_url, params=params) as res:
+            async with session.get(
+                    full_url,
+                    params=params,
+                    timeout=ClientTimeout(total=5)
+            ) as res:
                 if res.status != 200:
                     return 'Not found'
                 return await res.json()
@@ -120,7 +131,10 @@ class JikanAPI:
             anime.get_random_anime()
         """
         async with aiohttp.ClientSession() as session:
-            async with session.get(f'{self.base_url}/random/anime') as res:
+            async with session.get(
+                    f'{self.base_url}/random/anime',
+                    timeout=ClientTimeout(total=5)
+            ) as res:
                 if res.status != 200:
                     return 'Not found'
                 return await res.json()
@@ -145,7 +159,11 @@ class JikanAPI:
         """
         full_url = f'{self.base_url}/anime'
         async with aiohttp.ClientSession() as session:
-            async with session.get(full_url, params=anime_name_parameter) as res:
+            async with session.get(
+                    full_url,
+                    params=anime_name_parameter,
+                    timeout=ClientTimeout(total=5)
+            ) as res:
                 if res.status != 200:
                     return 'Not found'
                 return await res.json()
