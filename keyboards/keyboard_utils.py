@@ -77,7 +77,7 @@ def edit_genres_buttons(selected_genres: List[int]) -> List[InlineKeyboardButton
     return buttons
 
 
-def apply_filter_for_genres_button() -> List[InlineKeyboardButton]:
+async def apply_filter_for_genres_button() -> List[InlineKeyboardButton]:
     """
     Create an inline keyboard button for applying the genre filter.
 
