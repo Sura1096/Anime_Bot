@@ -5,7 +5,8 @@ from aiogram import Router
 
 from Git.Anime_Bot.handlers.start_inline_buttons import (process_genres_button,
                                                          genre_select_handler,
-                                                         genre_unselect_handler)
+                                                         genre_unselect_handler,
+                                                         apply_filter_handler)
 from Git.Anime_Bot.states.states import SelectGenres
 
 
@@ -96,3 +97,8 @@ async def test_genre_unselect_handler():
 
     assert state.data['selected_genres'] == []
     assert isinstance(message.reply_markup, InlineKeyboardMarkup)
+
+
+@pytest.mark.asyncio
+async def test_apply_filter_handler():
+    pass
