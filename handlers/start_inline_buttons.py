@@ -12,6 +12,18 @@ from states.states import SelectGenres
 router = Router()
 
 
+async def create_paginator(main_buttons, bottom_buttons, amount_per_page, amount_per_row):
+    paginator = KeyboardPaginator(
+        data=main_buttons,
+        additional_buttons=bottom_buttons,
+        router=router,
+        per_page=amount_per_page,
+        per_row=amount_per_row
+    )
+
+    return paginator
+
+
 @router.callback_query(F.data == 'genres')
 async def process_genres_button(callback: CallbackQuery, state: FSMContext):
     """
