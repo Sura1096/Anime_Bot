@@ -38,13 +38,16 @@ async def process_genres_button(callback: CallbackQuery, state: FSMContext):
         callback query when the 'Genres' button is clicked.
         - state (FSMContext): The current state of the finite state machine for handling user interactions.
     """
-    paginator = KeyboardPaginator(
-        data=genres_buttons(),
-        additional_buttons=[apply_filter_for_genres_button(), end_home_button()],
-        router=router,
-        per_page=10,
-        per_row=(3, 3)
+    genres = await genres_buttons()
+    apply_filter_button = await apply_filter_for_genres_button()
+    home_button = await end_home_button()
+    paginator = await create_paginator(
+        genres,
+        [apply_filter_button, home_button],
+        10,
+        (3, 3)
     )
+
     await state.set_state(SelectGenres.selected_genres)
     await callback.message.answer(text='Select genres ❤️‍🔥', reply_markup=paginator.as_markup())
     await callback.answer()
