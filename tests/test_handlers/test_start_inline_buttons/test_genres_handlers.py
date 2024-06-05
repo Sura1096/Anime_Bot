@@ -85,3 +85,14 @@ async def test_genre_select_handler():
     assert isinstance(message.reply_markup, InlineKeyboardMarkup)
 
 
+@pytest.mark.asyncio
+async def test_genre_unselect_handler():
+    message = MockMessage()
+    state = MockFSMContext()
+    callback_query = MockCallbackQuery(data='🟢_1', message=message)
+    state.data = {'selected_genres': [1]}
+
+    await genre_unselect_handler(callback_query, state)
+
+    assert state.data['selected_genres'] == []
+    assert isinstance(message.reply_markup, InlineKeyboardMarkup)
