@@ -45,6 +45,7 @@ async def process_home_page_button(callback: CallbackQuery):
         callback (CallbackQuery): The callback query object from aiogram representing the
         incoming callback query when the 'To home page' button is clicked
     """
+    keyboard = await user_choice_buttons()
     await callback.message.answer(text=LEXICON['/start'],
-                                  reply_markup=user_choice_buttons().as_markup())
+                                  reply_markup=keyboard.as_markup())
     await callback.answer()
