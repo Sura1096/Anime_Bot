@@ -42,7 +42,7 @@ async def help_command_button() -> InlineKeyboardMarkup:
     return keyboard
 
 
-def genres_buttons() -> List[InlineKeyboardButton]:
+async def genres_buttons() -> List[InlineKeyboardButton]:
     """
     Create inline keyboard buttons for each genre.
 
