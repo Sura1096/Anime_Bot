@@ -6,7 +6,7 @@ from external_services.API import JikanAPI
 from typing import List, Optional
 
 
-def user_choice_buttons() -> InlineKeyboardBuilder:
+async def user_choice_buttons() -> InlineKeyboardBuilder:
     """
     Create an inline keyboard with user choice buttons for various categories.
 
@@ -29,7 +29,7 @@ def user_choice_buttons() -> InlineKeyboardBuilder:
     return keyboard_builder
 
 
-def help_command_button() -> InlineKeyboardMarkup:
+async def help_command_button() -> InlineKeyboardMarkup:
     """
     Create an inline keyboard button for contacting the admin.
 
