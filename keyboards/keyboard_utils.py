@@ -90,7 +90,7 @@ async def apply_filter_for_genres_button() -> List[InlineKeyboardButton]:
     return apply_filter
 
 
-def end_home_button() -> List[InlineKeyboardButton]:
+async def end_home_button() -> List[InlineKeyboardButton]:
     """
     Create an inline keyboard button for returning to the home page.
 
