@@ -20,7 +20,7 @@ class ParseAnimeData:
         """
         self.anime = anime_data
 
-    def anime_image(self) -> str:
+    async def anime_image(self) -> str:
         """
         Retrieve the image URL of the anime.
 
@@ -36,7 +36,7 @@ class ParseAnimeData:
                 return res['images']['jpg']['image_url']
         return '<i>Image has not been added to this title.</i>'
 
-    def anime_title(self) -> str:
+    async def anime_title(self) -> str:
         """
         Retrieve the titles of the anime.
 
@@ -54,7 +54,7 @@ class ParseAnimeData:
             titles.append(res['title'])
         return f"<b>Titles:</b> {' / '.join(titles)}"
 
-    def anime_score(self) -> str:
+    async def anime_score(self) -> str:
         """
         Retrieve the score of the anime.
 
@@ -70,7 +70,7 @@ class ParseAnimeData:
         else:
             return "<i>No score information has been added to this title.</i>"
 
-    def anime_year(self) -> str:
+    async def anime_year(self) -> str:
         """
         Retrieve the release year of the anime.
 
@@ -86,7 +86,7 @@ class ParseAnimeData:
         else:
             return "<i>No year information has been added to this title.</i>"
 
-    def anime_included_genres_or_themes(self) -> str:
+    async def anime_included_genres_or_themes(self) -> str:
         """
         Retrieve the genres or themes of the anime.
 
@@ -111,7 +111,7 @@ class ParseAnimeData:
         else:
             return "<i>No genres/themes information has been added to this title.</i>"
 
-    def anime_description(self) -> str:
+    async def anime_description(self) -> str:
         """
         Retrieve the description of the anime.
 
@@ -126,7 +126,7 @@ class ParseAnimeData:
             return f"<b>Description:</b> {res['synopsis']}"
         return "<i>No description information has been added to this title.</i>"
 
-    def anime_type(self) -> str:
+    async def anime_type(self) -> str:
         """
         Retrieve the type of the anime (e.g., TV, Movie).
 
@@ -142,7 +142,7 @@ class ParseAnimeData:
         else:
             return "<i>No type information has been added to this title.</i>"
 
-    def anime_episodes(self) -> str:
+    async def anime_episodes(self) -> str:
         """
         Retrieve the number of episodes of the anime.
 
@@ -158,7 +158,7 @@ class ParseAnimeData:
         else:
             return "<i>No episodes information has been added to this title.</i>"
 
-    def anime_status(self) -> str:
+    async def anime_status(self) -> str:
         """
         Retrieve the status of the anime (e.g., Airing, Finished).
 
@@ -197,12 +197,12 @@ class ParseAnimeDataFromSearch:
         """
         self.anime = anime_data
 
-    def is_data(self):
+    async def is_data(self):
         if self.anime != 'Not found':
             return False
         return True
 
-    def anime_image(self) -> str:
+    async def anime_image(self) -> str:
         """
         Retrieve the image URL of the anime.
 
@@ -218,7 +218,7 @@ class ParseAnimeDataFromSearch:
                 return res['images']['jpg']['large_image_url']
         return 'Image has not been added to this title.'
 
-    def anime_title(self) -> str:
+    async def anime_title(self) -> str:
         """
         Retrieve the titles of the anime.
 
@@ -236,7 +236,7 @@ class ParseAnimeDataFromSearch:
             titles.append(res['title'])
         return ' / '.join(titles)
 
-    def anime_score(self) -> str | float:
+    async def anime_score(self) -> str | float:
         """
         Retrieve the score of the anime.
 
@@ -252,7 +252,7 @@ class ParseAnimeDataFromSearch:
         else:
             return "No score information has been added to this title."
 
-    def anime_year(self) -> str:
+    async def anime_year(self) -> str:
         """
         Retrieve the release year of the anime.
 
@@ -268,7 +268,7 @@ class ParseAnimeDataFromSearch:
         else:
             return "No year information has been added to this title."
 
-    def anime_included_genres_or_themes(self) -> str:
+    async def anime_included_genres_or_themes(self) -> str:
         """
         Retrieve the genres or themes of the anime.
 
@@ -293,7 +293,7 @@ class ParseAnimeDataFromSearch:
         else:
             return "No genres or themes information has been added to this title."
 
-    def anime_description(self) -> str:
+    async def anime_description(self) -> str:
         """
         Retrieve the description of the anime.
 
@@ -308,7 +308,7 @@ class ParseAnimeDataFromSearch:
             return f"<b>Description:</b> {res['synopsis']}"
         return "No description information has been added to this title."
 
-    def anime_type(self) -> str:
+    async def anime_type(self) -> str:
         """
         Retrieve the type of the anime (e.g., TV, Movie).
 
@@ -324,7 +324,7 @@ class ParseAnimeDataFromSearch:
         else:
             return "No type information has been added to this title."
 
-    def anime_episodes(self) -> str | int:
+    async def anime_episodes(self) -> str | int:
         """
         Retrieve the number of episodes of the anime.
 
@@ -341,7 +341,7 @@ class ParseAnimeDataFromSearch:
         else:
             return "No episodes information has been added to this title."
 
-    def anime_status(self) -> str:
+    async def anime_status(self) -> str:
         """
         Retrieve the status of the anime (e.g., Airing, Finished).
 
