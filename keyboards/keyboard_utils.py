@@ -67,7 +67,7 @@ async def genres_buttons() -> List[InlineKeyboardButton]:
     return buttons
 
 
-def edit_genres_buttons(selected_genres: List[int]) -> List[InlineKeyboardButton]:
+async def edit_genres_buttons(selected_genres: List[int]) -> List[InlineKeyboardButton]:
     """
     Create inline keyboard buttons for each genre with selected genres marked.
 
@@ -113,7 +113,7 @@ async def end_home_button() -> List[InlineKeyboardButton]:
     return home_button
 
 
-def random_home_buttons() -> InlineKeyboardBuilder:
+async def random_home_buttons() -> InlineKeyboardBuilder:
     """
     Create inline keyboard buttons for getting another random anime or returning to the home page.
 
@@ -129,7 +129,7 @@ def random_home_buttons() -> InlineKeyboardBuilder:
     return keyboard_builder
 
 
-def popular_anime_buttons() -> List[InlineKeyboardButton]:
+async def popular_anime_buttons() -> List[InlineKeyboardButton]:
     """
     Create inline keyboard buttons for the top popular anime.
 
