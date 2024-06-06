@@ -29,15 +29,15 @@ class RandomAnime:
         while data == 'Not found':
             data = await anime.get_random_anime()
         parse = ParseAnimeData(data)
-        image = parse.anime_image()
-        title = parse.anime_title()
-        score = parse.anime_score()
-        year = parse.anime_year()
-        genres = parse.anime_included_genres_or_themes()
-        desc = parse.anime_description()
-        type_anime = parse.anime_type()
-        eps = parse.anime_episodes()
-        status = parse.anime_status()
+        image = await parse.anime_image()
+        title = await parse.anime_title()
+        score = await parse.anime_score()
+        year = await parse.anime_year()
+        genres = await parse.anime_included_genres_or_themes()
+        desc = await parse.anime_description()
+        type_anime = await parse.anime_type()
+        eps = await parse.anime_episodes()
+        status = await parse.anime_status()
 
         return image, title, score, year, genres, desc, type_anime, eps, status
 
