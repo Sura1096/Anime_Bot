@@ -42,9 +42,9 @@ async def process_genres_button(callback: CallbackQuery, state: FSMContext):
         callback query when the 'Genres' button is clicked.
         - state (FSMContext): The current state of the finite state machine for handling user interactions.
     """
-    genres = await genres_buttons()
-    apply_filter_button = await apply_filter_for_genres_button()
-    home_button = await end_home_button()
+    genres = await ButtonsForGenres.genres_buttons()
+    apply_filter_button = await ButtonsForGenres.apply_filter_for_genres_button()
+    home_button = await ButtonsForCommands.end_home_button()
     paginator = await create_paginator(
         genres,
         [apply_filter_button, home_button],
@@ -66,9 +66,9 @@ async def update_genres_message(message, selected_genres):
         message (Message): The message object from aiogram representing the message to be edited.
         selected_genres (list): A list of selected genre IDs to update the button states accordingly.
     """
-    edit_buttons = await edit_genres_buttons(selected_genres)
-    apply_filter_button = await apply_filter_for_genres_button()
-    home_button = await end_home_button()
+    edit_buttons = await ButtonsForGenres.edit_genres_buttons(selected_genres)
+    apply_filter_button = await ButtonsForGenres.apply_filter_for_genres_button()
+    home_button = await ButtonsForCommands.end_home_button()
     paginator = await create_paginator(
         edit_buttons,
         [apply_filter_button, home_button],
@@ -150,10 +150,10 @@ async def apply_filter_handler(callback_query: CallbackQuery, state: FSMContext)
     data = await state.get_data()
     selected_genres = data.get('selected_genres', [])
     ids = ', '.join(str(genre) for genre in selected_genres)
-    generate_buttons = await genres_anime_buttons(ids)
+    generate_buttons = await ButtonsForGenres.genres_anime_buttons(ids)
 
     if generate_buttons:
-        home_button = await end_home_button()
+        home_button = await ButtonsForCommands.end_home_button()
         paginator = await create_paginator(
             generate_buttons,
             [home_button],
@@ -163,7 +163,7 @@ async def apply_filter_handler(callback_query: CallbackQuery, state: FSMContext)
         await callback_query.message.answer(text='Here are all the anime of your chosen genres 🪭',
                                             reply_markup=paginator.as_markup())
     else:
-        genre_category = await genre_category_button()
+        genre_category = await ButtonsForGenres.genre_category_button()
         await callback_query.message.answer(text='There is no anime with your selected genres 💔\n'
                                                  'Try choosing a different genre combination:з',
                                             reply_markup=genre_category.as_markup())
@@ -185,10 +185,10 @@ async def process_random_button(callback: CallbackQuery):
         callback query when the 'random anime' button is clicked.
 
     """
-    random_home_but = await random_home_buttons()
+    random_home_but = await ButtonsForRandom.random_home_buttons()
     try:
-        anime_items = await get_random_anime()
-        full_anime_info = await random_anime(anime_items)
+        anime_items = await RandomAnime.get_random_anime()
+        full_anime_info = await RandomAnime.random_anime(anime_items)
 
         await callback.message.answer_photo(photo=full_anime_info["image"])
         await callback.message.answer(text=f'🎲 {full_anime_info["title"]}\n'
@@ -220,8 +220,8 @@ async def process_popular_buttons(callback: CallbackQuery):
         callback (CallbackQuery): The callback query object from aiogram representing the incoming
         callback query when the 'popular anime' button is clicked.
     """
-    popular_anime = await popular_anime_buttons()
-    home_button = await end_home_button()
+    popular_anime = await ButtonsForPopularAnime.popular_anime_buttons()
+    home_button = await ButtonsForCommands.end_home_button()
     paginator = await create_paginator(
         popular_anime,
         [home_button],
