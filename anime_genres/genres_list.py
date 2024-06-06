@@ -2,7 +2,7 @@ from jikanpy import Jikan
 from typing import Dict
 
 
-def genres() -> Dict[int, str]:
+async def genres() -> Dict[int, str]:
     """
     Fetches and returns a dictionary of anime genres using the Jikan API.
 
