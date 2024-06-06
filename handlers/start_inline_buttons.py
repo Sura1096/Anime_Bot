@@ -62,12 +62,14 @@ async def update_genres_message(message, selected_genres):
         message (Message): The message object from aiogram representing the message to be edited.
         selected_genres (list): A list of selected genre IDs to update the button states accordingly.
     """
-    paginator = KeyboardPaginator(
-        data=edit_genres_buttons(selected_genres),
-        additional_buttons=[apply_filter_for_genres_button(), end_home_button()],
-        router=router,
-        per_page=10,
-        per_row=(3, 3)
+    edit_buttons = await edit_genres_buttons(selected_genres)
+    apply_filter_button = await apply_filter_for_genres_button()
+    home_button = await end_home_button()
+    paginator = await create_paginator(
+        edit_buttons,
+        [apply_filter_button, home_button],
+        10,
+        (3, 3)
     )
     await message.edit_reply_markup(reply_markup=paginator.as_markup())
 
