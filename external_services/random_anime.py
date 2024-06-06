@@ -1,3 +1,4 @@
+from typing import Dict
 from .API import JikanAPI
 from .parse_data_from_api import ParseAnimeData
 from typing import Dict
