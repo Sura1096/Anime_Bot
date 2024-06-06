@@ -201,7 +201,8 @@ async def process_random_button(callback: CallbackQuery):
     except Exception as e:
         await callback.message.answer(text='Oooops 👀\n'
                                            'Something went wrong ☠️.\n'
-                                           'Please press the button "Next 🟢" one more time ⬆️.')
+                                           'Please press the button "Next 🟢" one more time ⬆️.',
+                                      reply_markup=random_home_but.as_markup())
     finally:
         await callback.answer()
 
