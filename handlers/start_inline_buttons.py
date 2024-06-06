@@ -1,11 +1,15 @@
 from aiogram import F, Router
 from aiogram.types import CallbackQuery
-from keyboards.keyboard_utils import (genres_buttons, apply_filter_for_genres_button, end_home_button,
-                                      random_home_buttons, popular_anime_buttons, edit_genres_buttons,
-                                      genres_anime_buttons, genre_category_button)
-from aiogram_widgets.pagination import KeyboardPaginator
-from external_services.random_anime import get_random_anime, random_anime
 from aiogram.fsm.context import FSMContext
+
+from keyboards.keyboard_utils import ButtonsForCommands
+from keyboards.keyboard_utils import ButtonsForGenres
+from keyboards.keyboard_utils import ButtonsForRandom
+from keyboards.keyboard_utils import ButtonsForPopularAnime
+from external_services.random_anime import RandomAnime
+
+from aiogram_widgets.pagination import KeyboardPaginator
+
 from states.states import SelectGenres
 
 
