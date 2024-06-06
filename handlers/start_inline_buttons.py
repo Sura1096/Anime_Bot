@@ -197,7 +197,7 @@ async def process_random_button(callback: CallbackQuery):
                                            f'📜 {full_anime_info["desc"]}\n'
                                            f'\n☆*:.｡.o(≧▽≦)o.｡.:*☆',
                                       parse_mode='html',
-                                      reply_markup=random_home_buttons().as_markup())
+                                      reply_markup=random_home_but.as_markup())
     except Exception as e:
         await callback.message.answer(text='Oooops 👀\n'
                                            'Something went wrong ☠️.\n'
