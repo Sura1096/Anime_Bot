@@ -24,9 +24,10 @@ async def test_process_start_command():
     with patch.object(message, 'answer', new=AsyncMock()) as mock_answer:
         await process_start_command(message)
 
+        keyboard = await user_choice_buttons()
         mock_answer.assert_awaited_once_with(
             text=LEXICON['/start'],
-            reply_markup=user_choice_buttons().as_markup()
+            reply_markup=keyboard.as_markup()
         )
 
 
@@ -43,9 +44,10 @@ async def test_process_help_command():
     with patch.object(message, 'answer', new=AsyncMock()) as mock_answer:
         await process_help_command(message)
 
+        keyboard = await help_command_button()
         mock_answer.assert_awaited_once_with(
             text=LEXICON['/help'],
-            reply_markup=help_command_button()
+            reply_markup=keyboard
         )
 
 
@@ -72,9 +74,10 @@ async def test_process_home_page_button():
           patch.object(callback, 'answer', new=AsyncMock()) as mock_callback_answer):
         await process_home_page_button(callback)
 
+        keyboard = await user_choice_buttons()
         mock_message_answer.assert_awaited_once_with(
             text=LEXICON['/start'],
-            reply_markup=user_choice_buttons().as_markup()
+            reply_markup=keyboard.as_markup()
         )
 
         mock_callback_answer.assert_awaited_once_with()
