@@ -68,7 +68,7 @@ class ButtonsForGenres:
         Returns:
             List[InlineKeyboardButton]: A list of InlineKeyboardButton instances for genres.
         """
-        genres_dict = genres()
+        genres_dict = await genres()
         buttons: list[InlineKeyboardButton] = [
             InlineKeyboardButton(text=f'🔴 {genres_dict[genre_id]}', callback_data='🔴_' + str(genre_id))
             for genre_id in genres_dict
@@ -86,7 +86,7 @@ class ButtonsForGenres:
         Returns:
             List[InlineKeyboardButton]: A list of InlineKeyboardButton instances with selected genres marked.
         """
-        genres_dict = genres()
+        genres_dict = await genres()
         buttons = []
         for genre_id, genre_name in genres_dict.items():
             if genre_id in selected_genres:
