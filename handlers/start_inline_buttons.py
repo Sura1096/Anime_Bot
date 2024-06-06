@@ -216,12 +216,13 @@ async def process_popular_buttons(callback: CallbackQuery):
         callback (CallbackQuery): The callback query object from aiogram representing the incoming
         callback query when the 'popular anime' button is clicked.
     """
-    paginator = KeyboardPaginator(
-        data=popular_anime_buttons(),
-        additional_buttons=[end_home_button()],
-        router=router,
-        per_page=5,
-        per_row=(1, 1)
+    popular_anime = await popular_anime_buttons()
+    home_button = await end_home_button()
+    paginator = await create_paginator(
+        popular_anime,
+        [home_button],
+        5,
+        (1, 1)
     )
     await callback.message.answer(text='Here is all popular anime 🔥',
                                   reply_markup=paginator.as_markup())
