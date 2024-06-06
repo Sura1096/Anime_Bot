@@ -17,7 +17,7 @@ async def process_start_command(message: Message):
     Args:
         message (Message): The message object from aiogram representing the incoming /start command.
     """
-    keyboard = await user_choice_buttons()
+    keyboard = await ButtonsForCommands.user_choice_buttons()
     await message.answer(text=LEXICON['/start'],
                          reply_markup=keyboard.as_markup())
 
@@ -32,7 +32,7 @@ async def process_help_command(message: Message):
     Args:
         message (Message): The message object from aiogram representing the incoming /help command.
     """
-    keyboard = await help_command_button()
+    keyboard = await ButtonsForCommands.help_command_button()
     await message.answer(text=LEXICON['/help'],
                          reply_markup=keyboard)
 
@@ -46,7 +46,7 @@ async def process_home_page_button(callback: CallbackQuery):
         callback (CallbackQuery): The callback query object from aiogram representing the
         incoming callback query when the 'To home page' button is clicked
     """
-    keyboard = await user_choice_buttons()
+    keyboard = await ButtonsForCommands.user_choice_buttons()
     await callback.message.answer(text=LEXICON['/start'],
                                   reply_markup=keyboard.as_markup())
     await callback.answer()
