@@ -147,13 +147,14 @@ async def apply_filter_handler(callback_query: CallbackQuery, state: FSMContext)
     selected_genres = data.get('selected_genres', [])
     ids = ', '.join(str(genre) for genre in selected_genres)
     generate_buttons = await genres_anime_buttons(ids)
+
     if generate_buttons:
-        paginator = KeyboardPaginator(
-            data=generate_buttons,
-            additional_buttons=[end_home_button()],
-            router=router,
-            per_page=5,
-            per_row=(1, 1)
+        home_button = await end_home_button()
+        paginator = await create_paginator(
+            generate_buttons,
+            [home_button],
+            5,
+            (1, 1)
         )
         await callback_query.message.answer(text='Here are all the anime of your chosen genres 🪭',
                                             reply_markup=paginator.as_markup())
