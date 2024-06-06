@@ -184,7 +184,7 @@ async def process_random_button(callback: CallbackQuery):
     random_home_but = await random_home_buttons()
     try:
         anime_items = await get_random_anime()
-        full_anime_info = random_anime(anime_items)
+        full_anime_info = await random_anime(anime_items)
 
         await callback.message.answer_photo(photo=full_anime_info["image"])
         await callback.message.answer(text=f'🎲 {full_anime_info["title"]}\n'
