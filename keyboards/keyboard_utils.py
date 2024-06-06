@@ -42,6 +42,16 @@ async def help_command_button() -> InlineKeyboardMarkup:
     return keyboard
 
 
+async def genre_category_button() -> InlineKeyboardBuilder:
+    keyboard_builder = InlineKeyboardBuilder()
+    genre_category: list[InlineKeyboardButton] = [
+        InlineKeyboardButton(text='Genres 📁', callback_data='genres'),
+        InlineKeyboardButton(text='To home page ⛩', callback_data='home page')
+    ]
+    keyboard_builder.row(*genre_category, width=1)
+    return keyboard_builder
+
+
 async def genres_buttons() -> List[InlineKeyboardButton]:
     """
     Create inline keyboard buttons for each genre.
