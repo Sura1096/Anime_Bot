@@ -181,6 +181,7 @@ async def process_random_button(callback: CallbackQuery):
         callback query when the 'random anime' button is clicked.
 
     """
+    random_home_but = await random_home_buttons()
     try:
         anime_items = await get_random_anime()
         full_anime_info = random_anime(anime_items)
