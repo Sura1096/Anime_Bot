@@ -159,7 +159,10 @@ async def apply_filter_handler(callback_query: CallbackQuery, state: FSMContext)
         await callback_query.message.answer(text='Here are all the anime of your chosen genres 🪭',
                                             reply_markup=paginator.as_markup())
     else:
-        await callback_query.message.answer(text='There is no anime with your selected genres 💔')
+        genre_category = await genre_category_button()
+        await callback_query.message.answer(text='There is no anime with your selected genres 💔\n'
+                                                 'Try choosing a different genre combination:з',
+                                            reply_markup=genre_category.as_markup())
     await state.clear()
     await callback_query.answer()
 
