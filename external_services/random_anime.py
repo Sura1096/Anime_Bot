@@ -40,7 +40,7 @@ async def get_random_anime() -> tuple:
     return image, title, score, year, genres, desc, type_anime, eps, status
 
 
-def random_anime(anime_info) -> Dict[str, str]:
+async def random_anime(anime_info) -> Dict[str, str]:
     """
     Convert a tuple of anime information into a dictionary.
 
