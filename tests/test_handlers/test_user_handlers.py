@@ -7,8 +7,7 @@ from Git.Anime_Bot.handlers.user_handlers import (process_start_command,
                                                   process_help_command,
                                                   process_home_page_button)
 from Git.Anime_Bot.lexicon.lexicon import LEXICON
-from Git.Anime_Bot.keyboards.keyboard_utils import (user_choice_buttons,
-                                                    help_command_button)
+from Git.Anime_Bot.keyboards.keyboard_utils import ButtonsForCommands
 
 
 @pytest.mark.asyncio
@@ -24,7 +23,7 @@ async def test_process_start_command():
     with patch.object(message, 'answer', new=AsyncMock()) as mock_answer:
         await process_start_command(message)
 
-        keyboard = await user_choice_buttons()
+        keyboard = await ButtonsForCommands.user_choice_buttons()
         mock_answer.assert_awaited_once_with(
             text=LEXICON['/start'],
             reply_markup=keyboard.as_markup()
@@ -44,7 +43,7 @@ async def test_process_help_command():
     with patch.object(message, 'answer', new=AsyncMock()) as mock_answer:
         await process_help_command(message)
 
-        keyboard = await help_command_button()
+        keyboard = await ButtonsForCommands.help_command_button()
         mock_answer.assert_awaited_once_with(
             text=LEXICON['/help'],
             reply_markup=keyboard
@@ -74,7 +73,7 @@ async def test_process_home_page_button():
           patch.object(callback, 'answer', new=AsyncMock()) as mock_callback_answer):
         await process_home_page_button(callback)
 
-        keyboard = await user_choice_buttons()
+        keyboard = await ButtonsForCommands.user_choice_buttons()
         mock_message_answer.assert_awaited_once_with(
             text=LEXICON['/start'],
             reply_markup=keyboard.as_markup()
