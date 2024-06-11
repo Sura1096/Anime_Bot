@@ -34,5 +34,5 @@ async def test_get_anime_by_id_not_found():
     with aioresponses() as mock:
         mock.get(url(2), status=404)
 
-        response = await jikan_api.get_anime_by_id(anime_id)
-        assert response == None
+        response = await anime.get_anime_by_id(2)
+        assert response == 'Not found'
