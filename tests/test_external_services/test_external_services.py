@@ -5,6 +5,13 @@ from aioresponses import aioresponses
 from Git.Anime_Bot.external_services.API import JikanAPI
 
 
+anime = JikanAPI()
+
+
+def url(anime_id):
+    return f'https://api.jikan.moe/v4/anime/{anime_id}'
+
+
 @pytest.mark.asyncio
 async def test_get_anime_by_id():
     jikan_api = JikanAPI()
