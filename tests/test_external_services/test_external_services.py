@@ -22,7 +22,7 @@ async def test_get_anime_by_id():
                     'mal_id': 5
                 }
         }
-    }
+        mock.get(url(5), status=200, payload=mock_response)
 
     with aioresponses() as m:
         m.get(api_url, payload=expected_response)
