@@ -30,7 +30,6 @@ async def test_get_anime_by_id():
 
 @pytest.mark.asyncio
 async def test_get_anime_by_id_not_found():
-    jikan_api = JikanAPI()
 
     anime_id = 2
     api_url = f'https://api.jikan.moe/v4/anime/{anime_id}'
