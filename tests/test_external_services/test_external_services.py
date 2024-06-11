@@ -31,11 +31,8 @@ async def test_get_anime_by_id():
 @pytest.mark.asyncio
 async def test_get_anime_by_id_not_found():
 
-    anime_id = 2
-    api_url = f'https://api.jikan.moe/v4/anime/{anime_id}'
-
-    with aioresponses() as m:
-        m.get(api_url)
+    with aioresponses() as mock:
+        mock.get(url(2), status=404)
 
         response = await jikan_api.get_anime_by_id(anime_id)
         assert response == None
