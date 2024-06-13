@@ -25,6 +25,9 @@ async def test_get_anime_by_id():
         mock.get(url(5), status=200, payload=mock_response)
 
         response = await anime.get_anime_by_id(5)
+
+        assert 'data' in response
+        assert 'mal_id' in response['data']
         assert response['data']['mal_id'] == 5
 
 
