@@ -141,7 +141,7 @@ class JikanAPI:
 
     async def get_searched_anime(
             self,
-            anime_name_parameter
+            anime_name_parameter: Dict[str, str]
     ) -> Dict[str, Any] | str:
         """
         Search for anime by name.
