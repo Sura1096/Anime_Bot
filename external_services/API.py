@@ -92,7 +92,7 @@ class JikanAPI:
 
     async def search_by_genres_id(
             self,
-            params
+            params: Dict[str, str]
     ) -> Dict[str, Any] | str:
         """
         Search for anime by genre IDs.
