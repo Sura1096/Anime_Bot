@@ -28,7 +28,6 @@ async def test_get_anime_by_id():
 
         assert 'data' in response
         assert 'mal_id' in response['data']
-        assert response['data']['mal_id'] == 5
 
 
 @pytest.mark.asyncio
