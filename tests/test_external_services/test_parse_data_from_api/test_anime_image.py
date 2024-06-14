@@ -39,7 +39,7 @@ async def test_anime_image_without_image():
 
 
 @pytest.mark.asyncio
-async def test_anime_image_no_image_field():
+async def test_anime_image_no_images():
     anime_data_no_image_field = {
         'data': {
             'images': None
