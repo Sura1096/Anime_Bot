@@ -35,3 +35,14 @@ async def test_anime_image_without_image():
     parser = ParseAnimeData(anime_data_without_image)
     image_url = await parser.anime_image()
     assert image_url == '<i>Image has not been added to this title.</i>'
+
+
+@pytest.mark.asyncio
+async def test_anime_image_no_image_field():
+    anime_data_no_image_field = {
+        'data': {}
+    }
+
+    parser = ParseAnimeData(anime_data_no_image_field)
+    image_url = await parser.anime_image()
+    assert image_url == '<i>Image has not been added to this title.</i>'
