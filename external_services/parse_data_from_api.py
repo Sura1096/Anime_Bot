@@ -103,11 +103,11 @@ class ParseAnimeData:
         if res['genres']:
             for genre in res['genres']:
                 genres.append(genre['name'])
-                return f"<b>Genres:</b> {', '.join(genres)}"
+            return f"<b>Genres:</b> {', '.join(genres)}"
         elif res['themes']:
             for theme in res['themes']:
                 themes.append(theme['name'])
-                return f"<b>Themes:</b> {', '.join(themes)}"
+            return f"<b>Themes:</b> {', '.join(themes)}"
         else:
             return "<i>No genres/themes information has been added to this title.</i>"
 
