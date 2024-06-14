@@ -51,7 +51,7 @@ async def test_anime_image_no_image_field():
 
 # Tests for ParseAnimeDataFromSearch class
 @pytest.mark.asyncio
-async def test_anime_image_with_image():
+async def test_anime_image():
     anime_data_with_image = {
         'data': [{
             'images': {
@@ -67,7 +67,7 @@ async def test_anime_image_with_image():
 
 
 @pytest.mark.asyncio
-async def test_anime_image_without_image():
+async def test_anime_image_no_image():
     anime_data_without_image = {
         'data': [{
             'images': {
