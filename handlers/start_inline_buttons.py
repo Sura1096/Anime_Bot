@@ -30,6 +30,7 @@ async def create_paginator(main_buttons, bottom_buttons, amount_per_page, amount
 
 @router.callback_query(F.data == 'genres')
 async def process_genres_button(callback: CallbackQuery, state: FSMContext):
+    await state.clear()
     """
     Handles the 'Genres' inline button click and sends a paginated list of genre buttons.
 
