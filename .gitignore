@@ -2,3 +2,4 @@ tutorial-env/
 .idea
 __pycache__/
 .env
+DOCS
