@@ -5,7 +5,7 @@
 
 #### ***AnimeBot*** — это телеграм-бот, который позволяет пользователям находить и просматривать информацию об аниме.
 
-![Описание GIF](DOCS/bot.gif)
+![Описание GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExemJ1aGhocWhwbTJ4cXo4NmRjOHhveXg2enF4MjMwc2xuamN3NzQ0YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EAXVlNtjc8F1oBCNRA/giphy-downsized-large.gif)
 
 
 ## Функционал 🛠
