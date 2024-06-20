@@ -1,5 +1,4 @@
-# Anime Finder Bot 🌸 [![Telegram Bot](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://t.me/anime_mentor_bot)
-
+# Anime Finder Bot 🌸 [![Telegram Bot](https://img.shields.io/badge/Telegram-Bot-pink.svg)](https://t.me/anime_mentor_bot)
 
 ## Описание ✏️
 
