@@ -1,6 +1,6 @@
 import pytest
-
-from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
+from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData
+from Git.Anime_Bot.external_services.parse_searched_anime import ParseSearchedAnime
 
 
 # Tests for ParseAnimeData class
@@ -52,7 +52,7 @@ async def test_anime_included_genres_or_themes():
             'themes': None
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_with_genres)
+    parser = ParseSearchedAnime(anime_data_with_genres)
     genres_or_themes = await parser.anime_included_genres_or_themes()
     assert genres_or_themes == '<b>Genres:</b> Action, Adventure'
 
@@ -65,7 +65,7 @@ async def test_anime_included_themes():
             'themes': [{'name': 'Super Power'}, {'name': 'School'}]
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_with_themes)
+    parser = ParseSearchedAnime(anime_data_with_themes)
     genres_or_themes = await parser.anime_included_genres_or_themes()
     assert genres_or_themes == '<b>Themes:</b> Super Power, School'
 
@@ -78,6 +78,6 @@ async def test_anime_included_genres_empty():
             'themes': None
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_no_genres_or_themes)
+    parser = ParseSearchedAnime(anime_data_no_genres_or_themes)
     genres_or_themes = await parser.anime_included_genres_or_themes()
     assert genres_or_themes == "No genres or themes information has been added to this title."

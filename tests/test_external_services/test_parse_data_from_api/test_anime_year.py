@@ -1,6 +1,6 @@
 import pytest
-
-from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
+from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData
+from Git.Anime_Bot.external_services.parse_searched_anime import ParseSearchedAnime
 
 
 # Tests for ParseAnimeData class
@@ -36,7 +36,7 @@ async def test_anime_year():
             'year': 2020
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_with_year)
+    parser = ParseSearchedAnime(anime_data_with_year)
     year = await parser.anime_year()
     assert year == "<b>Year:</b> 2020"
 
@@ -48,6 +48,6 @@ async def test_anime_year_without_year():
             'year': None
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_without_year)
+    parser = ParseSearchedAnime(anime_data_without_year)
     year = await parser.anime_year()
     assert year == "No year information has been added to this title."

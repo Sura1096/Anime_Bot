@@ -1,5 +1,6 @@
-import pytest
 from unittest.mock import AsyncMock, patch
+
+import pytest
 from Git.Anime_Bot.external_services.random_anime import RandomAnime
 
 

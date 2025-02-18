@@ -1,6 +1,6 @@
 import pytest
-
-from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
+from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData
+from Git.Anime_Bot.external_services.parse_searched_anime import ParseSearchedAnime
 
 
 # Tests for ParseAnimeData class
@@ -63,7 +63,7 @@ async def test_anime_image():
             }
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_with_image)
+    parser = ParseSearchedAnime(anime_data_with_image)
     image_url = await parser.anime_image()
     assert image_url == 'https://example.com/image.jpg'
 
@@ -79,6 +79,6 @@ async def test_anime_image_no_image():
             }
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_without_image)
+    parser = ParseSearchedAnime(anime_data_without_image)
     image_url = await parser.anime_image()
     assert image_url == 'Image has not been added to this title.'

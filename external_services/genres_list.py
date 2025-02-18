@@ -1,5 +1,6 @@
-from jikanpy import Jikan
 from typing import Dict
+
+from jikanpy import Jikan
 
 
 async def genres() -> Dict[int, str]:
@@ -9,10 +10,10 @@ async def genres() -> Dict[int, str]:
     Returns: dict[int, str]: A dictionary mapping genre IDs to genre names.
     """
     anime = Jikan()
-    data = anime.genres('anime')['data']
+    data = anime.genres("anime")["data"]
     genres_dict: dict[int, str] = {}
 
     for item in data:
-        genres_dict[item['mal_id']] = item['name']
+        genres_dict[item["mal_id"]] = item["name"]
 
     return genres_dict

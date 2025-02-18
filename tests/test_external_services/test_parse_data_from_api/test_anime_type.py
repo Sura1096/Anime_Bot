@@ -1,6 +1,6 @@
 import pytest
-
-from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
+from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData
+from Git.Anime_Bot.external_services.parse_searched_anime import ParseSearchedAnime
 
 
 # Tests for ParseAnimeData class
@@ -36,7 +36,7 @@ async def test_anime_type():
             'type': 'TV'
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_with_type)
+    parser = ParseSearchedAnime(anime_data_with_type)
     anime_type = await parser.anime_type()
     assert anime_type == '<b>Type:</b> TV'
 
@@ -48,6 +48,6 @@ async def test_anime_type_without_type():
             'type': None
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_without_type)
+    parser = ParseSearchedAnime(anime_data_without_type)
     anime_type = await parser.anime_type()
     assert anime_type == "No type information has been added to this title."

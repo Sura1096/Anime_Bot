@@ -1,8 +1,7 @@
-import pytest
 import urllib.parse
 
+import pytest
 from aioresponses import aioresponses
-
 from Git.Anime_Bot.external_services.API import JikanAPI
 
 

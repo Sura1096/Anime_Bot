@@ -1,6 +1,6 @@
 import pytest
-
-from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
+from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData
+from Git.Anime_Bot.external_services.parse_searched_anime import ParseSearchedAnime
 
 
 # Tests for ParseAnimeData class
@@ -36,7 +36,7 @@ async def test_anime_status():
             'status': 'Finished Airing'
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_with_status)
+    parser = ParseSearchedAnime(anime_data_with_status)
     status = await parser.anime_status()
     assert status == 'Finished Airing'
 
@@ -48,6 +48,6 @@ async def test_anime_status_without_status():
             'status': None
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_without_status)
+    parser = ParseSearchedAnime(anime_data_without_status)
     status = await parser.anime_status()
     assert status == "No status information has been added to this title."

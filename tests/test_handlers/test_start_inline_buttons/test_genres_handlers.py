@@ -1,12 +1,13 @@
 import pytest
-from aiogram.types import InlineKeyboardMarkup
-from aiogram.fsm.state import State
 from aiogram import Router
-
-from Git.Anime_Bot.handlers.start_inline_buttons import (process_genres_button,
-                                                         genre_select_handler,
-                                                         genre_unselect_handler,
-                                                         apply_filter_handler)
+from aiogram.fsm.state import State
+from aiogram.types import InlineKeyboardMarkup
+from Git.Anime_Bot.handlers.start_inline_buttons import (
+    apply_filter_handler,
+    genre_select_handler,
+    genre_unselect_handler,
+    process_genres_button,
+)
 from Git.Anime_Bot.states.states import SelectGenres
 
 

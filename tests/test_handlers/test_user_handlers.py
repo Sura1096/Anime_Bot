@@ -1,13 +1,11 @@
-import pytest
-from unittest.mock import AsyncMock, patch
-from aiogram.types import Chat
 from types import SimpleNamespace
+from unittest.mock import AsyncMock, patch
 
-from Git.Anime_Bot.handlers.user_handlers import (process_start_command,
-                                                  process_help_command,
-                                                  process_home_page_button)
-from Git.Anime_Bot.lexicon.lexicon import LEXICON
+import pytest
+from aiogram.types import Chat
+from Git.Anime_Bot.handlers.user_handlers import process_help_command, process_home_page_button, process_start_command
 from Git.Anime_Bot.keyboards.keyboard_utils import ButtonsForCommands
+from Git.Anime_Bot.lexicon.lexicon import LEXICON
 
 
 @pytest.mark.asyncio

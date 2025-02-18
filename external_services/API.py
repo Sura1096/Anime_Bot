@@ -1,11 +1,13 @@
+from typing import Any, Dict
+
 import aiohttp
 from aiohttp import ClientTimeout
-from typing import Dict, Any
 
 
 class JikanAPI:
     """
-    A Python interface for interacting with the Jikan API, which provides data about anime.
+    A Python interface for interacting with the Jikan API,
+    which provides data about anime.
 
     Attributes:
         base_url (str): The base URL for the Jikan API.
@@ -26,15 +28,14 @@ class JikanAPI:
         get_searched_anime(anime_name_parameter: dict):
             Search for anime by name.
     """
-    def __init__(
-            self,
-            base_url='https://api.jikan.moe/v4'
-    ) -> None:
+
+    def __init__(self, base_url: str ="https://api.jikan.moe/v4") -> None:
         """
         Initialize the JikanAPI with a base URL.
 
         Args:
-            base_url (str): The base URL for the Jikan API. Defaults to 'https://api.jikan.moe/v4'.
+            base_url (str): The base URL for the Jikan API.
+            Defaults to 'https://api.jikan.moe/v4'.
 
         Returns:
             JikanAPI: Instance of JikanAPI
@@ -44,10 +45,7 @@ class JikanAPI:
         """
         self.base_url = base_url
 
-    async def get_anime_by_id(
-            self,
-            anime_id: int
-    ) -> Dict[str, Any] | str:
+    async def get_anime_by_id(self, anime_id: int) -> Dict[str, Any] | str:
         """
         Retrieve details of an anime by its ID.
 
@@ -63,11 +61,11 @@ class JikanAPI:
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                    f'{self.base_url}/anime/{anime_id}',
+                    f"{self.base_url}/anime/{anime_id}",
                     timeout=ClientTimeout(total=5)
             ) as res:
                 if res.status != 200:
-                    return 'Not found'
+                    return "Not found"
                 return await res.json()
 
     async def genres(self) -> Dict[str, Any] | str:
@@ -83,11 +81,11 @@ class JikanAPI:
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                    f'{self.base_url}/genres/anime',
+                    f"{self.base_url}/genres/anime",
                     timeout=ClientTimeout(total=5)
             ) as res:
                 if res.status != 200:
-                    return 'Not found'
+                    return "Not found"
                 return await res.json()
 
     async def search_by_genres_id(
@@ -108,7 +106,7 @@ class JikanAPI:
         Example:
             anime.search_by_genres_id({'genres': '1, 2, 3'})
         """
-        full_url = f'{self.base_url}/anime'
+        full_url = f"{self.base_url}/anime"
         async with aiohttp.ClientSession() as session:
             async with session.get(
                     full_url,
@@ -116,7 +114,7 @@ class JikanAPI:
                     timeout=ClientTimeout(total=5)
             ) as res:
                 if res.status != 200:
-                    return 'Not found'
+                    return "Not found"
                 return await res.json()
 
     async def get_random_anime(self) -> Dict[str, Any] | str:
@@ -132,11 +130,11 @@ class JikanAPI:
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                    f'{self.base_url}/random/anime',
+                    f"{self.base_url}/random/anime",
                     timeout=ClientTimeout(total=5)
             ) as res:
                 if res.status != 200:
-                    return 'Not found'
+                    return "Not found"
                 return await res.json()
 
     async def get_searched_anime(
@@ -147,8 +145,9 @@ class JikanAPI:
         Search for anime by name.
 
         Args:
-            anime_name_parameter (dict): A dictionary containing query parameters,
-            with 'q' key holding the anime name to search for.
+            anime_name_parameter (dict): A dictionary containing
+            query parameters, with 'q' key holding
+            the anime name to search for.
 
         Returns:
             dict: A dictionary containing the search results.
@@ -157,7 +156,7 @@ class JikanAPI:
         Example:
             anime.get_searched_anime({'q': 'Oshi no ko'})
         """
-        full_url = f'{self.base_url}/anime'
+        full_url = f"{self.base_url}/anime"
         async with aiohttp.ClientSession() as session:
             async with session.get(
                     full_url,
@@ -165,5 +164,5 @@ class JikanAPI:
                     timeout=ClientTimeout(total=5)
             ) as res:
                 if res.status != 200:
-                    return 'Not found'
+                    return "Not found"
                 return await res.json()

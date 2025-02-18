@@ -1,10 +1,10 @@
-import pytest
-from unittest.mock import AsyncMock, patch
 from types import SimpleNamespace
-from aiogram.types import Chat
+from unittest.mock import AsyncMock, patch
 
-from Git.Anime_Bot.handlers.other_handlers import rest_message_handler
+import pytest
+from aiogram.types import Chat
 from Git.Anime_Bot.filters.is_admin import my_filter
+from Git.Anime_Bot.handlers.other_handlers import rest_message_handler
 
 
 @pytest.mark.asyncio

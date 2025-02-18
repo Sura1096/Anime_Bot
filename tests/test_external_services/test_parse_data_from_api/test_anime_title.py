@@ -1,6 +1,6 @@
 import pytest
-
-from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
+from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData
+from Git.Anime_Bot.external_services.parse_searched_anime import ParseSearchedAnime
 
 
 # Tests for ParseAnimeData class
@@ -55,7 +55,7 @@ async def test_anime_title_with_titles():
             'title': 'Boku no Hero Academia'
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_with_titles)
+    parser = ParseSearchedAnime(anime_data_with_titles)
     titles = await parser.anime_title()
     assert titles == 'My Hero Academia / Boku no Hero Academia'
 
@@ -69,7 +69,7 @@ async def test_anime_title_english():
         }]
     }
 
-    parser = ParseAnimeDataFromSearch(anime_data_with_english_title)
+    parser = ParseSearchedAnime(anime_data_with_english_title)
     titles = await parser.anime_title()
     assert titles == 'My Hero Academia'
 
@@ -83,6 +83,6 @@ async def test_anime_title_original():
         }]
     }
 
-    parser = ParseAnimeDataFromSearch(anime_data_with_original_title)
+    parser = ParseSearchedAnime(anime_data_with_original_title)
     titles = await parser.anime_title()
     assert titles == 'Boku no Hero Academia'

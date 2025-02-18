@@ -1,10 +1,11 @@
+from unittest.mock import MagicMock, patch
+
 import pytest
-from unittest.mock import patch, MagicMock
-from Git.Anime_Bot.anime_genres.genres_list import genres
+from Git.Anime_Bot.external_services.genres_list import genres
 
 
 @pytest.mark.asyncio
-@patch('Git.Anime_Bot.anime_genres.genres_list.Jikan')
+@patch('Git.Anime_Bot.external_services.genres_list.Jikan')
 async def test_genres(mock_jikan):
     mock_jikan.return_value.genres = MagicMock(return_value={
         'data': [

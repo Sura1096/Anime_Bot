@@ -1,6 +1,6 @@
 import pytest
-
-from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData, ParseAnimeDataFromSearch
+from Git.Anime_Bot.external_services.parse_data_from_api import ParseAnimeData
+from Git.Anime_Bot.external_services.parse_searched_anime import ParseSearchedAnime
 
 
 # Tests for ParseAnimeData class
@@ -36,7 +36,7 @@ async def test_anime_episodes():
             'episodes': 24
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_with_episodes)
+    parser = ParseSearchedAnime(anime_data_with_episodes)
     episodes = await parser.anime_episodes()
     assert episodes == 24
 
@@ -48,6 +48,6 @@ async def test_anime_episodes_without_episodes():
             'episodes': None
         }]
     }
-    parser = ParseAnimeDataFromSearch(anime_data_without_episodes)
+    parser = ParseSearchedAnime(anime_data_without_episodes)
     episodes = await parser.anime_episodes()
     assert episodes == "No episodes information has been added to this title."
